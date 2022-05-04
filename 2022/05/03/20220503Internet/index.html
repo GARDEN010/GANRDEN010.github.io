@@ -20,28 +20,36 @@
     var CONFIG = {"hostname":"garden010.github.io","root":"/GANRDEN010.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Garden">
-<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/index.html">
+  <meta name="description" content="2.1 物理层的基本概念 计算机网络中的硬件设备和传输媒体的种类非常繁多，而通信手段也有许多不同方式。&#x3D;&#x3D;物理层的作用正是要尽可能地屏蔽掉这些传输媒体和通信手段的差异&#x3D;&#x3D;  协议与规程 用于物理层的协议(protocol)也常称为物理层规程(procedure)。其实物理层规程就是物理层协议。只是在“协议”这个名词出现之前人们就先使用了“规程”这一名词。  物理层规定了： 机械特性：规定接口用什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（计网复习）物理层基础_1">
+<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/03/20220503Internet/index.html">
 <meta property="og:site_name" content="Garden">
+<meta property="og:description" content="2.1 物理层的基本概念 计算机网络中的硬件设备和传输媒体的种类非常繁多，而通信手段也有许多不同方式。&#x3D;&#x3D;物理层的作用正是要尽可能地屏蔽掉这些传输媒体和通信手段的差异&#x3D;&#x3D;  协议与规程 用于物理层的协议(protocol)也常称为物理层规程(procedure)。其实物理层规程就是物理层协议。只是在“协议”这个名词出现之前人们就先使用了“规程”这一名词。  物理层规定了： 机械特性：规定接口用什么">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/03/20220503Internet/1.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/03/20220503Internet/2.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/03/20220503Internet/3.png">
+<meta property="article:published_time" content="2022-05-03T05:40:39.000Z">
+<meta property="article:modified_time" content="2022-05-04T03:37:55.500Z">
 <meta property="article:author" content="Garden">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/03/20220503Internet/1.png">
 
-<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/">
+<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/03/20220503Internet/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Garden</title>
+  <title>（计网复习）物理层基础_1 | Garden</title>
   
 
 
@@ -140,9 +148,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -158,10 +167,9 @@
       <meta itemprop="name" content="Garden">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/GANRDEN010.github.io/2022/05/03/20220503Internet/" class="post-title-link" itemprop="url">（计网复习）物理层基础_1</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          （计网复习）物理层基础_1
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -191,7 +199,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="2-1-物理层的基本概念"><a href="#2-1-物理层的基本概念" class="headerlink" title="2.1 物理层的基本概念"></a>2.1 物理层的基本概念</h3><blockquote>
+        <h3 id="2-1-物理层的基本概念"><a href="#2-1-物理层的基本概念" class="headerlink" title="2.1 物理层的基本概念"></a>2.1 物理层的基本概念</h3><blockquote>
 <p>计算机网络中的硬件设备和传输媒体的种类非常繁多，而通信手段也有许多不同方式。==物理层的作用正是要尽可能地屏蔽掉这些传输媒体和通信手段的差异==</p>
 </blockquote>
 <h5 id="协议与规程"><a href="#协议与规程" class="headerlink" title="协议与规程"></a>协议与规程</h5><blockquote>
@@ -286,153 +294,30 @@
 </li>
 </ol>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/01/20220501scrapy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
-      <meta itemprop="name" content="Garden">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Garden">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/GANRDEN010.github.io/2022/05/01/20220501scrapy/" class="post-title-link" itemprop="url">网络爬虫和scrapy框架</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-01 15:13:08 / 修改时间：15:17:22" itemprop="dateCreated datePublished" datetime="2022-05-01T15:13:08+08:00">2022-05-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1、网络爬虫"><a href="#1、网络爬虫" class="headerlink" title="1、网络爬虫"></a>1、网络爬虫</h3><blockquote>
-<p>模拟浏览器发送网络请求，并接收请求响应，按照一定的规则，自动地抓取互联网信息的程序被称作网络爬虫。</p>
-</blockquote>
-<h3 id="2、爬虫发展"><a href="#2、爬虫发展" class="headerlink" title="2、爬虫发展"></a>2、爬虫发展</h3><blockquote>
-<p>（1）1993年12月，首个基于爬虫的网络搜索引擎—JumpStation诞生。<br>（2）2000年，Salesforce和eBay都推出了自己的API，程序员可以通过这些API    访问并下载一些公开数据。当发送一组HTTP请求后就能接收JSON或XML的返回。<br>（3）2004年，Beautiful Soup发布。<br>（4）目前，大多数爬虫被用后台脚本类语言来写，python是用的最多最广的。诞    生了很多优秀的库和框架，如scrapy、BeautifulSoup 、pyquery、Mechanize等。</p>
-</blockquote>
-<h3 id="3、scrapy框架"><a href="#3、scrapy框架" class="headerlink" title="3、scrapy框架"></a>3、scrapy框架</h3><h4 id="3-1、scrapy简介"><a href="#3-1、scrapy简介" class="headerlink" title="3.1、scrapy简介"></a>3.1、scrapy简介</h4><blockquote>
-<p>Scrapy 是基于Python 的一个web抓取框架，可以用于抓取web站点并从页面中    提取结构化的数据。Scrapy 用途广泛，还用于数据挖掘、监测和自动化测试等。</p>
-</blockquote>
-<h4 id="3-2、Scrapy基本模块"><a href="#3-2、Scrapy基本模块" class="headerlink" title="3.2、Scrapy基本模块"></a>3.2、Scrapy基本模块</h4><blockquote>
-<p>（1）调度器(Scheduler)<br>调度器，有一个URL的优先队列，由调度器来决定下一个要抓取的网址是什么，    同时去除重复的网址。用户也可以自己的需求定制调度器。<br>（2）下载器(Downloader)<br>下载器，是所有组件中负担最大的，它用于高速地下载网络上的资源。因为是     Scrapy 下载器是建立在 twisted 这个高效的异步模型上的，所以效率高，<br>（3）爬虫（Spider）<br>爬虫是用户最关心的部份。用户通过正则表达式等语法定制自己的爬虫，从特定的    网页中提取自己需要的信息，即实体(Item)。同时用户也可以从中提取出链接，让    Scrapy继续抓取下一个页面。<br>（4）实体管道(Item Pipeline)<br>用于接收网络爬虫传过来的数据，以便做进一步处理。例如存入数据库、存入文本    文件等。<br>（5）Scrapy引擎(Scrapy Engine)<br>Scrapy 引擎是整个框架的核心，用来处理整个系统的数据流并触发各种事件。引    擎相当于计算机的CPU，它控制着整个流程。<br>（6）中间件<br>Scrapy 框架有很多中间件，如下载器中间件、网络爬虫中间件等，这些中间件相    当于过滤器，夹在不同部分之间截获数据流，并进行特殊的加工处理。</p>
-</blockquote>
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/1.jpg" class title="image">
-<center>图一.1  scrapy框架基本模块</center>
-
-<h4 id="3-3、Scrapy运行基本流程"><a href="#3-3、Scrapy运行基本流程" class="headerlink" title="3.3、Scrapy运行基本流程"></a>3.3、Scrapy运行基本流程</h4><blockquote>
-<ol>
-<li>scrapy引擎问询spider爬虫需要处理的网站。</li>
-<li>spider回复要处理的网站为 xxx.com，scrapy引擎获取一个URL。</li>
-<li>scrapy引擎向scheduler调度器发送request请求排序入队。</li>
-<li>调度器scheduler返回处理好的request队列给scrapy引擎。</li>
-<li>scrapy引擎向downloader下载器发送请求，按照下载中间件的设置来下载 request请求</li>
-<li>Downloader下载器返回下载信息给scrapy引擎。<br>  如果失败，scrapy引擎告诉Scheduler调度器这个request下载失败了，记              录一下待会儿再下载；<br> 如果成功，    responses默认是交给def parse()这个函数处理。</li>
-</ol>
-</blockquote>
-<h4 id="3-4、Scrapy的基本使用"><a href="#3-4、Scrapy的基本使用" class="headerlink" title="3.4、Scrapy的基本使用"></a>3.4、Scrapy的基本使用</h4><h5 id="3-4-1-环境安装（Windows）"><a href="#3-4-1-环境安装（Windows）" class="headerlink" title="3.4.1 环境安装（Windows）"></a>3.4.1 环境安装（Windows）</h5><ol>
-<li><p>wheel文件是python的一种生成包格式文件,像一种特定的zip文件，以‘.whl’后缀。<br>它是Python生态系统的一个组件，有助于包的安装工作正常进行。允许更快的安装和更稳定的包分发过程。</p>
-<blockquote>
-<p>pip install wheel</p>
-</blockquote>
-</li>
-<li><p>下载Twisted，在官网下载对应python版本的wheel文件。</p>
-</li>
-</ol>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted">https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted</a></p>
-</blockquote>
-<ol start="3">
-<li>安装PyWin32<br>python模块虽多，也不可能满足开发者的所有需求。而且，模块为了便于使用，通常都封装过度，有些功能无法灵活使用，必须直接调用Windows API来实现。模块pywin32可以解决这个问题，它直接包装了几乎所有的Windows API，可以方便地从Python直接调用。</li>
-</ol>
-<blockquote>
-<p>pip install pywin32</p>
-</blockquote>
-<h5 id="3-4-2-新建scrapy项目"><a href="#3-4-2-新建scrapy项目" class="headerlink" title="3.4.2 新建scrapy项目"></a>3.4.2 新建scrapy项目</h5><ol>
-<li>打开项目文件，控制台输入<blockquote>
-<p>scrapy startproject xxxPro</p>
-</blockquote>
-</li>
-</ol>
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/2.png" class title="image">
-
-<center>图一.2 scrapy项目结构</center>
+        
 
 
-<ol start="2">
-<li>在spider子目录中创建一个爬虫文件</li>
-</ol>
-<blockquote>
-<p>cd xxxPro(进入工程目录)<br>scrapy genspider spiderName <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
-</blockquote>
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/3.png" class title="image">
-<center>图一.3 新建爬虫文件（1）</center>
-此时会生成一个spider文件，并生成相应代码
-
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/4.png" class title="image">
-
-<center>图一.4 新建爬虫文件（2）</center>
-
-<ol start="3">
-<li>执行scrapy爬虫项目<br>控制台输入<blockquote>
-<p>scrapy crawl spiderName</p>
-</blockquote>
-</li>
-</ol>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/01/20220501scrapy/" rel="prev" title="网络爬虫和scrapy框架">
+      <i class="fa fa-chevron-left"></i> 网络爬虫和scrapy框架
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -485,6 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">2.1 物理层的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E4%B8%8E%E8%A7%84%E7%A8%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">协议与规程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E8%A7%84%E5%AE%9A%E4%BA%86%EF%BC%9A"><span class="nav-number">1.0.2.</span> <span class="nav-text">物理层规定了：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">2.2 数据通信基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E5%8F%AF%E5%88%92%E5%88%86%E4%B8%BA%E4%B8%89%E5%A4%A7%E9%83%A8%E5%88%86%EF%BC%8C%E5%8D%B3%E6%BA%90%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%88%96%E5%8F%91%E9%80%81%E7%AB%AF%E3%80%81%E5%8F%91%E9%80%81%E6%96%B9%EF%BC%89%E3%80%81%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%88%96%E4%BC%A0%E8%BE%93%E7%BD%91%E7%BB%9C%EF%BC%89%E5%92%8C%E7%9B%AE%E7%9A%84%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%88%96%E6%8E%A5%E6%94%B6%E7%AB%AF%E3%80%81%E6%8E%A5%E6%94%B6%E6%96%B9%EF%BC%89"><span class="nav-number">2.0.1.</span> <span class="nav-text">一个数据通信系统可划分为三大部分，即源系统（或发送端、发送方）、传输系统（或传输网络）和目的系统（或接收端、接收方）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%B3%BB%E7%BB%9F%EF%BC%9A%E4%BF%A1%E6%BA%90-%E5%8F%91%E9%80%81%E5%99%A8"><span class="nav-number">2.0.2.</span> <span class="nav-text">源系统：信源+发送器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84%E7%B3%BB%E7%BB%9F%EF%BC%9A%E6%8E%A5%E6%94%B6%E5%99%A8-%E4%BF%A1%E5%AE%BF"><span class="nav-number">2.0.3.</span> <span class="nav-text">目的系统：接收器+信宿</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E5%88%86%E7%B1%BB"><span class="nav-number">2.0.4.</span> <span class="nav-text">信号分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%A1%E9%81%93"><span class="nav-number">2.0.5.</span> <span class="nav-text">信道</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
