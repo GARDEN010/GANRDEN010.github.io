@@ -20,28 +20,41 @@
     var CONFIG = {"hostname":"garden010.github.io","root":"/GANRDEN010.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Garden">
-<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/index.html">
+  <meta name="description" content="一、flask框架 flask框架是python中的一个轻量级的前后端开发框架，不同于Django，flask只提供基础的功能，其他的功能需要安装各种插件。  官方文档：  https:&#x2F;&#x2F;dormousehole.readthedocs.io&#x2F;en&#x2F;latest&#x2F;  知了文档  https:&#x2F;&#x2F;www.zlkt.net&#x2F;book&#x2F;detail&#x2F;10  安装flask cmd: pip insta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理">
+<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/index.html">
 <meta property="og:site_name" content="Garden">
+<meta property="og:description" content="一、flask框架 flask框架是python中的一个轻量级的前后端开发框架，不同于Django，flask只提供基础的功能，其他的功能需要安装各种插件。  官方文档：  https:&#x2F;&#x2F;dormousehole.readthedocs.io&#x2F;en&#x2F;latest&#x2F;  知了文档  https:&#x2F;&#x2F;www.zlkt.net&#x2F;book&#x2F;detail&#x2F;10  安装flask cmd: pip insta">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/1.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/2.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/3.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/4.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/5.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/6.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/7.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/8.png">
+<meta property="article:published_time" content="2022-05-05T07:32:53.000Z">
+<meta property="article:modified_time" content="2022-05-06T03:15:02.962Z">
 <meta property="article:author" content="Garden">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/1.png">
 
-<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/">
+<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Garden</title>
+  <title>毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理 | Garden</title>
   
 
 
@@ -140,9 +153,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -158,10 +172,9 @@
       <meta itemprop="name" content="Garden">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/GANRDEN010.github.io/2022/05/05/20220505BS-01/" class="post-title-link" itemprop="url">毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -191,7 +204,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="一、flask框架"><a href="#一、flask框架" class="headerlink" title="一、flask框架"></a>一、flask框架</h3><blockquote>
+        <h3 id="一、flask框架"><a href="#一、flask框架" class="headerlink" title="一、flask框架"></a>一、flask框架</h3><blockquote>
 <p>flask框架是python中的一个轻量级的前后端开发框架，不同于Django，flask只提供基础的功能，其他的功能需要安装各种插件。</p>
 </blockquote>
 <p>官方文档：</p>
@@ -247,311 +260,30 @@
 
 
 <h3 id="至此，数据预处理基本完成，接下来就是模型的训练。"><a href="#至此，数据预处理基本完成，接下来就是模型的训练。" class="headerlink" title="至此，数据预处理基本完成，接下来就是模型的训练。"></a>至此，数据预处理基本完成，接下来就是模型的训练。</h3>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/03/20220503Internet/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
-      <meta itemprop="name" content="Garden">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Garden">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/GANRDEN010.github.io/2022/05/03/20220503Internet/" class="post-title-link" itemprop="url">（计网复习）物理层基础_1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-05-03 13:40:39" itemprop="dateCreated datePublished" datetime="2022-05-03T13:40:39+08:00">2022-05-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 11:37:55" itemprop="dateModified" datetime="2022-05-04T11:37:55+08:00">2022-05-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="2-1-物理层的基本概念"><a href="#2-1-物理层的基本概念" class="headerlink" title="2.1 物理层的基本概念"></a>2.1 物理层的基本概念</h3><blockquote>
-<p>计算机网络中的硬件设备和传输媒体的种类非常繁多，而通信手段也有许多不同方式。==物理层的作用正是要尽可能地屏蔽掉这些传输媒体和通信手段的差异==</p>
-</blockquote>
-<h5 id="协议与规程"><a href="#协议与规程" class="headerlink" title="协议与规程"></a>协议与规程</h5><blockquote>
-<p>用于物理层的协议(protocol)也常称为物理层规程(procedure)。其实物理层规程就是物理层协议。只是在“协议”这个名词出现之前人们就先使用了“规程”这一名词。</p>
-</blockquote>
-<h5 id="物理层规定了："><a href="#物理层规定了：" class="headerlink" title="物理层规定了："></a>物理层规定了：</h5><ul>
-<li>机械特性：规定接口用什么<blockquote>
-<p>指明接口所用接线器的形状和尺寸，引脚数目和排列，固定和锁定装置，等等。平时常见的各种规格的接插件都有严格的标准化的规定。</p>
-</blockquote>
-</li>
-<li>电气特性：规定电压范围<blockquote>
-<p>指明在接口电缆的各条线上出现的电压的范围。</p>
-</blockquote>
-</li>
-<li>功能特性：规定电压含义<blockquote>
-<p>指明在接口电缆的各条线上出现的电压的范围。</p>
-</blockquote>
-</li>
-<li>过程特性：规定时序<blockquote>
-<p>指明对于不同功能的各种可能事件的出现顺序。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="2-2-数据通信基础"><a href="#2-2-数据通信基础" class="headerlink" title="2.2 数据通信基础"></a>2.2 数据通信基础</h3><h5 id="一个数据通信系统可划分为三大部分，即源系统（或发送端、发送方）、传输系统（或传输网络）和目的系统（或接收端、接收方）"><a href="#一个数据通信系统可划分为三大部分，即源系统（或发送端、发送方）、传输系统（或传输网络）和目的系统（或接收端、接收方）" class="headerlink" title="一个数据通信系统可划分为三大部分，即源系统（或发送端、发送方）、传输系统（或传输网络）和目的系统（或接收端、接收方）"></a>一个数据通信系统可划分为三大部分，即源系统（或发送端、发送方）、传输系统（或传输网络）和目的系统（或接收端、接收方）</h5><img src="/GANRDEN010.github.io/2022/05/03/20220503Internet/1.png" class title="image">
-<center>数据通信系统模型</center>
-
-<h5 id="源系统：信源-发送器"><a href="#源系统：信源-发送器" class="headerlink" title="源系统：信源+发送器"></a>源系统：信源+发送器</h5><blockquote>
-<p>通常，源点生成的数字比特流要通过发送器编码后才能够在传输系统中进行传输。典型的发送器就是调制器。</p>
-</blockquote>
-<h5 id="目的系统：接收器-信宿"><a href="#目的系统：接收器-信宿" class="headerlink" title="目的系统：接收器+信宿"></a>目的系统：接收器+信宿</h5><blockquote>
-<p>典型的接收器就是解调器，它把来自传输线路上的模拟信号进行解调，提取出在发送端置入的消息，还原出发送端产生的数字比特流。</p>
-</blockquote>
-<h5 id="信号分类"><a href="#信号分类" class="headerlink" title="信号分类"></a>信号分类</h5><ol>
-<li>模拟信号，或连续信号——代表消息的参数的取值是连续的。(如电话线上信号)</li>
-<li>数字信号，或离散信号——代表消息的参数的取值是离散的。在使用二进制编码时，只有两种不同的码元，一种代表0状态而另一种代表1状态。</li>
-</ol>
-<h5 id="信道"><a href="#信道" class="headerlink" title="信道"></a>信道</h5><blockquote>
-<p>信道和电路并不等同。信道一般都是用来表示向某一个方向传送信息的媒体。因此，一条通信电路往往包含一条发送信道和一条接收信道。</p>
-</blockquote>
-<ol>
-<li>单向通信，又称为单工通信，即只能有一个方向的通信而没有反方向的交互。(无线电广播、有线电广播、电视广播)</li>
-<li> 双向交替通信，又称为半双工通信，即通信的双方都可以发送信息，但不能双方同时发送（接收）</li>
-<li>双向同时通信 又称为全双工通信，即通信的双方可以同时发送和接收信息。</li>
-</ol>
-<blockquote>
-<p>来自信源的信号常称为基带信号（即基本频带信号）。基带信号往往包含有较多的低频成分，甚至有直流成分，而许多信道并不能传输这种低频分量或直流分量。为了解决这一问题，就必须对基带信号进行调制。调制分类如下：</p>
-</blockquote>
-<ol>
-<li>基带调制(数字信号——&gt;数字信号)：仅仅对基带信号的波形进行变换，使它能够与信道特性相适应。变换后的信号仍然是基带信号，此过程也称==编码==。</li>
-<li>带通调制(数字信号——&gt;模拟信号)：需要使用载波进行调制，把基带信号的频率范围搬移到较高的频段，并转换为模拟信号，这样就能够更好地在模拟信道中传输。</li>
-</ol>
-<blockquote>
-<p>编码方式：不归零制、归零制、曼彻斯特编码、差分曼彻斯特编码…<br>带通调制：</p>
-</blockquote>
-<ul>
-<li>调幅(AM)，即载波的振幅随基带数字信号而变化。例如，0或1分别对应于无载波或有载波输出。</li>
-<li>调频(FM)，即载波的频率随基带数字信号而变化。例如，0或1分别对应于频率f1或f2。</li>
-<li>调相(PM)，即载波的初始相位随基带数字信号而变化。例如，0或1分别对应于相位0度或180度。</li>
-</ul>
-<ul>
-<li>为了达到更高的信息传输速率，必须采用技术上更为复杂的多元制的振幅相位混合调制方法。例如，正交振幅调制。</li>
-</ul>
-<blockquote>
-<p>在传输信号时会产生各种失真</p>
-</blockquote>
-<p>数字通信的优点就是：在接收端只要我们能从失真的波形识别出原来的信号，那么这种失真对通信质量就没有影响。</p>
-<p>BUT,失真大则无法辨认：码元传输的速率越高，或信号传输的距离越远，或噪声干扰越大，或传输媒体质量越差，在接收端的波形的失真就越严重。</p>
-<blockquote>
-<p>限制码元在信道上的传输速率的因素:</p>
-</blockquote>
-<ol>
-<li><p>信道能够通过的频率范围</p>
-<ul>
-<li>信号中的许多高频分量往往不能通过信道。</li>
-<li>如果信号中的高频分量在传输时受到衰减，那么在接收端收到的波形前沿和后沿就变得不那么陡峭了，每一个码元所占的时间界限也不再是很明确的,接收端收到的信号波形就失去了码元之间的清晰界限。这种现象叫做码间串扰。</li>
-<li>奈氏准则：给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值。即==在任何信道中，码元传输的速率是有上限的，传输速率超过此上限，就会出现严重的码间串扰的问题，使接收端对码元的识别成为不可能。==</li>
-<li>如果信道的频带越宽，也就是能够通过的信号高频分量越多，那么就可以用更高的速率传送码元而不出现码间串扰。</li>
-</ul>
-</li>
-<li><p>信噪比</p>
-<ul>
-<li>信噪比就是信号的平均功率和噪声的平均功率之比，常记为 S/N，并用分贝(dB)作为度量单位。</li>
-</ul>
- <img src="/GANRDEN010.github.io/2022/05/03/20220503Internet/2.png" class title="image">
-
-<ul>
-<li>香农公式：信道的带宽或信道中的信噪比越大，信息的极限传输速率就越高。</li>
-<li>W为信道的带宽（以Hz为单位）；S为信道内所传信号的平均功率；N为信道内部的高斯噪声功率。香农公式指出：信道的极限信息传输速率C是</li>
-</ul>
- <img src="/GANRDEN010.github.io/2022/05/03/20220503Internet/3.png" class title="image"></li>
-<li><p>对于频带宽度已确定的信道，如果信噪比也不能再提高了，并且码元传输速率也达到了上限值，用编码的方法让每一个码元携带更多比特的信息量。</p>
-</li>
-</ol>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/03/20220503Internet/" rel="prev" title="（计网复习）物理层基础_1">
+      <i class="fa fa-chevron-left"></i> （计网复习）物理层基础_1
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/01/20220501scrapy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
-      <meta itemprop="name" content="Garden">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Garden">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/GANRDEN010.github.io/2022/05/01/20220501scrapy/" class="post-title-link" itemprop="url">网络爬虫和scrapy框架</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-05-01 15:13:08 / 修改时间：15:17:22" itemprop="dateCreated datePublished" datetime="2022-05-01T15:13:08+08:00">2022-05-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1、网络爬虫"><a href="#1、网络爬虫" class="headerlink" title="1、网络爬虫"></a>1、网络爬虫</h3><blockquote>
-<p>模拟浏览器发送网络请求，并接收请求响应，按照一定的规则，自动地抓取互联网信息的程序被称作网络爬虫。</p>
-</blockquote>
-<h3 id="2、爬虫发展"><a href="#2、爬虫发展" class="headerlink" title="2、爬虫发展"></a>2、爬虫发展</h3><blockquote>
-<p>（1）1993年12月，首个基于爬虫的网络搜索引擎—JumpStation诞生。<br>（2）2000年，Salesforce和eBay都推出了自己的API，程序员可以通过这些API    访问并下载一些公开数据。当发送一组HTTP请求后就能接收JSON或XML的返回。<br>（3）2004年，Beautiful Soup发布。<br>（4）目前，大多数爬虫被用后台脚本类语言来写，python是用的最多最广的。诞    生了很多优秀的库和框架，如scrapy、BeautifulSoup 、pyquery、Mechanize等。</p>
-</blockquote>
-<h3 id="3、scrapy框架"><a href="#3、scrapy框架" class="headerlink" title="3、scrapy框架"></a>3、scrapy框架</h3><h4 id="3-1、scrapy简介"><a href="#3-1、scrapy简介" class="headerlink" title="3.1、scrapy简介"></a>3.1、scrapy简介</h4><blockquote>
-<p>Scrapy 是基于Python 的一个web抓取框架，可以用于抓取web站点并从页面中    提取结构化的数据。Scrapy 用途广泛，还用于数据挖掘、监测和自动化测试等。</p>
-</blockquote>
-<h4 id="3-2、Scrapy基本模块"><a href="#3-2、Scrapy基本模块" class="headerlink" title="3.2、Scrapy基本模块"></a>3.2、Scrapy基本模块</h4><blockquote>
-<p>（1）调度器(Scheduler)<br>调度器，有一个URL的优先队列，由调度器来决定下一个要抓取的网址是什么，    同时去除重复的网址。用户也可以自己的需求定制调度器。<br>（2）下载器(Downloader)<br>下载器，是所有组件中负担最大的，它用于高速地下载网络上的资源。因为是     Scrapy 下载器是建立在 twisted 这个高效的异步模型上的，所以效率高，<br>（3）爬虫（Spider）<br>爬虫是用户最关心的部份。用户通过正则表达式等语法定制自己的爬虫，从特定的    网页中提取自己需要的信息，即实体(Item)。同时用户也可以从中提取出链接，让    Scrapy继续抓取下一个页面。<br>（4）实体管道(Item Pipeline)<br>用于接收网络爬虫传过来的数据，以便做进一步处理。例如存入数据库、存入文本    文件等。<br>（5）Scrapy引擎(Scrapy Engine)<br>Scrapy 引擎是整个框架的核心，用来处理整个系统的数据流并触发各种事件。引    擎相当于计算机的CPU，它控制着整个流程。<br>（6）中间件<br>Scrapy 框架有很多中间件，如下载器中间件、网络爬虫中间件等，这些中间件相    当于过滤器，夹在不同部分之间截获数据流，并进行特殊的加工处理。</p>
-</blockquote>
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/1.jpg" class title="image">
-<center>图一.1  scrapy框架基本模块</center>
-
-<h4 id="3-3、Scrapy运行基本流程"><a href="#3-3、Scrapy运行基本流程" class="headerlink" title="3.3、Scrapy运行基本流程"></a>3.3、Scrapy运行基本流程</h4><blockquote>
-<ol>
-<li>scrapy引擎问询spider爬虫需要处理的网站。</li>
-<li>spider回复要处理的网站为 xxx.com，scrapy引擎获取一个URL。</li>
-<li>scrapy引擎向scheduler调度器发送request请求排序入队。</li>
-<li>调度器scheduler返回处理好的request队列给scrapy引擎。</li>
-<li>scrapy引擎向downloader下载器发送请求，按照下载中间件的设置来下载 request请求</li>
-<li>Downloader下载器返回下载信息给scrapy引擎。<br>  如果失败，scrapy引擎告诉Scheduler调度器这个request下载失败了，记              录一下待会儿再下载；<br> 如果成功，    responses默认是交给def parse()这个函数处理。</li>
-</ol>
-</blockquote>
-<h4 id="3-4、Scrapy的基本使用"><a href="#3-4、Scrapy的基本使用" class="headerlink" title="3.4、Scrapy的基本使用"></a>3.4、Scrapy的基本使用</h4><h5 id="3-4-1-环境安装（Windows）"><a href="#3-4-1-环境安装（Windows）" class="headerlink" title="3.4.1 环境安装（Windows）"></a>3.4.1 环境安装（Windows）</h5><ol>
-<li><p>wheel文件是python的一种生成包格式文件,像一种特定的zip文件，以‘.whl’后缀。<br>它是Python生态系统的一个组件，有助于包的安装工作正常进行。允许更快的安装和更稳定的包分发过程。</p>
-<blockquote>
-<p>pip install wheel</p>
-</blockquote>
-</li>
-<li><p>下载Twisted，在官网下载对应python版本的wheel文件。</p>
-</li>
-</ol>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted">https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted</a></p>
-</blockquote>
-<ol start="3">
-<li>安装PyWin32<br>python模块虽多，也不可能满足开发者的所有需求。而且，模块为了便于使用，通常都封装过度，有些功能无法灵活使用，必须直接调用Windows API来实现。模块pywin32可以解决这个问题，它直接包装了几乎所有的Windows API，可以方便地从Python直接调用。</li>
-</ol>
-<blockquote>
-<p>pip install pywin32</p>
-</blockquote>
-<h5 id="3-4-2-新建scrapy项目"><a href="#3-4-2-新建scrapy项目" class="headerlink" title="3.4.2 新建scrapy项目"></a>3.4.2 新建scrapy项目</h5><ol>
-<li>打开项目文件，控制台输入<blockquote>
-<p>scrapy startproject xxxPro</p>
-</blockquote>
-</li>
-</ol>
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/2.png" class title="image">
-
-<center>图一.2 scrapy项目结构</center>
-
-
-<ol start="2">
-<li>在spider子目录中创建一个爬虫文件</li>
-</ol>
-<blockquote>
-<p>cd xxxPro(进入工程目录)<br>scrapy genspider spiderName <a target="_blank" rel="noopener" href="http://www.xxx.com/">www.xxx.com</a></p>
-</blockquote>
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/3.png" class title="image">
-<center>图一.3 新建爬虫文件（1）</center>
-此时会生成一个spider文件，并生成相应代码
-
-<img src="/GANRDEN010.github.io/2022/05/01/20220501scrapy/4.png" class title="image">
-
-<center>图一.4 新建爬虫文件（2）</center>
-
-<ol start="3">
-<li>执行scrapy爬虫项目<br>控制台输入<blockquote>
-<p>scrapy crawl spiderName</p>
-</blockquote>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -604,6 +336,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81flask%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">一、flask框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85flask"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装flask</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BB%BAflask%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">新建flask项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">二、设计模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87scrapy%E6%A1%86%E6%9E%B6%E7%88%AC%E5%88%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">1. 通过scrapy框架爬到的数据集：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%AE%BE%E7%BD%AE%E5%81%9C%E7%94%A8%E8%AF%8D%E5%AD%97%E5%85%B8%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%8D%E5%85%B8%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">2. 设置停用词字典和自定义词典：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3. 数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89-Data-Pre-get-data-self-fp-%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）. Data_Pre().get_data(self,fp)，获取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89-Data-Pre-pre-word-self-data-%EF%BC%8C%E5%8E%BB%E5%81%9C%E7%94%A8%E8%AF%8D%E7%AD%89"><span class="nav-number">2.3.2.</span> <span class="nav-text">（2）. Data_Pre().pre_word(self,data)，去停用词等</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89-Data-Pre-word-frequency-self-data-%EF%BC%8C%E7%BB%9F%E8%AE%A1%E8%AF%8D%E9%A2%91%E5%B9%B6%E5%81%9A%E9%99%8D%E5%BA%8F%E6%8E%92%E5%88%97%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E4%B8%BA%E8%AF%8D%E4%BA%91%E5%81%9A%E5%87%86%E5%A4%87"><span class="nav-number">2.3.3.</span> <span class="nav-text">（3）. Data_Pre().word_frequency(self,data)，统计词频并做降序排列————为词云做准备</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89-Data-Pre-target-self-lenth-target-%E7%BB%99%E8%AE%AD%E7%BB%83%E9%9B%86%E5%8A%A0%E4%B8%8A%E7%B1%BB%E5%88%AB"><span class="nav-number">2.3.4.</span> <span class="nav-text">（3）. Data_Pre().target(self,lenth,target) :给训练集加上类别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89-SumData-sum-data-self-data1-data2-data3-%E5%90%88%E5%B9%B6%E5%8A%A0%E5%AE%8C%E7%B1%BB%E5%88%AB%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.3.5.</span> <span class="nav-text">（3）. SumData().sum_data(self,data1,data2,data3) :合并加完类别的数据集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%B3%E6%AD%A4%EF%BC%8C%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E5%AE%8C%E6%88%90%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E6%98%AF%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%AD%E7%BB%83%E3%80%82"><span class="nav-number">3.</span> <span class="nav-text">至此，数据预处理基本完成，接下来就是模型的训练。</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
