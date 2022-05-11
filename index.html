@@ -146,6 +146,163 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
+      <meta itemprop="name" content="Garden">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Garden">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/GANRDEN010.github.io/2022/05/11/20220511BS-04/" class="post-title-link" itemprop="url">20220511BS-04</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-11 00:16:20" itemprop="dateCreated datePublished" datetime="2022-05-11T00:16:20+08:00">2022-05-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/09/20220509BS-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
+      <meta itemprop="name" content="Garden">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Garden">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/GANRDEN010.github.io/2022/05/09/20220509BS-03/" class="post-title-link" itemprop="url">毕设：基于机器学习的法律文书自动分类系统设计与实现__03flask基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-09 14:47:21" itemprop="dateCreated datePublished" datetime="2022-05-09T14:47:21+08:00">2022-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-11 09:32:39" itemprop="dateModified" datetime="2022-05-11T09:32:39+08:00">2022-05-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一、Jinja2模板"><a href="#一、Jinja2模板" class="headerlink" title="一、Jinja2模板"></a>一、Jinja2模板</h3><p>Jinja2 是一个现代的，设计者友好的，仿照 Django 模板的 Python 模板语言。它速度快，被广泛使用，并且提供了可选的沙箱模板执行环境保证安全。</p>
+<ol>
+<li>render_template，渲染模板</li>
+</ol>
+<ul>
+<li><p>在templates文件夹中新建html页面（即模板文件），通过render_template来渲染模板</p>
+</li>
+<li><p>在app.py中新建路由，url必须以/开头，否则会报错（ValueError: urls must start with a leading slash）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask,render_template</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/about&quot;)</span><br><span class="line">def about():</span><br><span class="line">    return render_template(&quot;about.html&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>此时开启服务器，访问<a target="_blank" rel="noopener" href="http://127.0.0.1:5000/about%E5%8D%B3%E5%8F%AF%E5%88%B0%E8%BE%BE%E6%B8%B2%E6%9F%93%E5%AE%8C%E6%AF%95%E7%9A%84html%E9%A1%B5%E9%9D%A2%E3%80%82">http://127.0.0.1:5000/about即可到达渲染完毕的html页面。</a></p>
+</li>
+<li><p>如果要传递参数，用插值表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#  html中：</span><br><span class="line">&lt;h1&gt;这里是关于页面,&#123;&#123; username &#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/about&quot;)</span><br><span class="line">def about():</span><br><span class="line">    context = &#123;</span><br><span class="line">        &quot;username&quot;:&quot;张三&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    #  **context关键字参数</span><br><span class="line">    return render_template(&quot;about.html&quot;,**context)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>控制语句<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+ if语句：在模板文件中从 &#123;% %&#125; 写，例如 &#123;% if age &gt; 18 %&#125; ,同时必须要有结束语句&#123;% end if %&#125;。</span><br><span class="line">+ 循环for in ：例如&#123;% for book in books %&#125;,&#123;% end for %&#125;。</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>其他可以去看Jinja中文文档<a target="_blank" rel="noopener" href="https://docs.pythontab.com/jinja/jinja2/index.html%EF%BC%8C%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B0%B1%E6%98%AF%E4%BB%A5%E4%B8%8A%E9%83%A8%E5%88%86">https://docs.pythontab.com/jinja/jinja2/index.html，常用的就是以上部分</a></p>
+<ol start="3">
+<li>模板继承：用于解决重复代码冗余问题</li>
+</ol>
+<ul>
+<li>先定义一个父模板（base.html），然后把子模板要实现的部分抽取出来（相当于开个入口）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&#123;#&#123;% block title %&#125;&#123;% endblock %&#125;规定了子模板的入口#&#125;</span><br><span class="line">  &lt;title&gt;&#123;% block title %&#125;&#123;% endblock %&#125;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;header&gt;我是顶部&lt;/header&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;/about&quot;&gt;关于&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&#123;#这里是每个子模板各自实现的部分#&#125;</span><br><span class="line">&#123;% block body %&#125;&#123;% endblock %&#125;</span><br><span class="line">&lt;footer&gt;我是底部&lt;/footer&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+<li>子模板继承父模板，复用父模板的公共部分，实现入口处私有部分，例如：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 关于页面</span><br><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line">&#123;% block title %&#125;关于&#123;% endblock %&#125;</span><br><span class="line">&#123;% block body %&#125;</span><br><span class="line">    &lt;h1&gt;这是关于&lt;/h1&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line"># 首页</span><br><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line">&#123;% block title %&#125;首页&#123;% endblock %&#125;</span><br><span class="line">&#123;% block body %&#125;</span><br><span class="line">    &lt;h1&gt;这是首页&lt;/h1&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+<p>实现效果：</p>
+<img src="/GANRDEN010.github.io/2022/05/09/20220509BS-03/1.png" class title="1.png">
+
+<ol start="4">
+<li>模板中加载静态文件</li>
+</ol>
+<p>web应用中会出现大量静态文件使得网页变得更加生动美观，例如css样式文件、JavaScript脚本文件、图片、字体文件等。Jinja2中加载静态文件使用url_for全局函数即可实现。<br>url_for函数默认从根目录下/static文件夹中寻找。</p>
+<p>例如：使用bootstrap5UI框架（<a target="_blank" rel="noopener" href="https://v5.bootcss.com/%EF%BC%89%EF%BC%8C%E6%A0%B9%E6%8D%AE%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E5%AE%89%E8%A3%85%E5%90%8E%E6%94%BE%E5%9C%A8static%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%EF%BC%8C%E5%BC%95%E5%85%A5">https://v5.bootcss.com/），根据中文文档安装后放在static文件夹中，引入</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;&#123; url_for(&#x27;static&#x27;,filename=&#x27;bootstrap5/bootstrap.min.css&#x27;) &#125;&#125;&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;&#123; url_for(&#x27;static&#x27;,filename=&#x27;bootstrap5/font/bootstrap-icons.css&#x27;) &#125;&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -900,7 +1057,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/GANRDEN010.github.io/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
