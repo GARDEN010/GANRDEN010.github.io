@@ -146,6 +146,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/06/03/20220603-Scanner/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
+      <meta itemprop="name" content="Garden">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Garden">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/GANRDEN010.github.io/2022/06/03/20220603-Scanner/" class="post-title-link" itemprop="url">【复习日记】java中Scanner用法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-06-03 15:10:01 / 修改时间：15:52:50" itemprop="dateCreated datePublished" datetime="2022-06-03T15:10:01+08:00">2022-06-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Scanner用法"><a href="#Scanner用法" class="headerlink" title="Scanner用法"></a>Scanner用法</h3><p>Scanner本质是一个扫描器，可用于读键盘输入、文件信息等。</p>
+<p>当通过new Scanner(System.in)创建一个Scanner，控制台会一直等待输入，直到敲回车键结束，把所输入的内容传给Scanner，作为扫描对象。</p>
+<h4 id="一、常用方法"><a href="#一、常用方法" class="headerlink" title="一、常用方法"></a>一、常用方法</h4><ul>
+<li>next()：遇到空格或者换行符停止，返回String类型。</li>
+<li>nextLine()；遇到换行符停止，返回String类型。</li>
+<li>nextInt()，nextByte()，nextDouble()，nextFloat()，nextInt()，nextLong()，nextShot()等各种数据类型：这些方法可以读取对应的数据类型直到空格，并且只读对应的数据类型，输入其他类型的值会报InputMismatchException异常。</li>
+<li>hasNext():判断扫描器中当前扫描位置后是否还存在下一段（空格分割）</li>
+<li>hasNextLine()：判断扫描器中当前扫描位置后是否还存在下一行（换行符分割）</li>
+</ul>
+<h4 id="二、指定分隔符"><a href="#二、指定分隔符" class="headerlink" title="二、指定分隔符"></a>二、指定分隔符</h4><p>Scanner默认使用空格作为分割符来分隔文本，但useDelimiter()方法允许你指定新的分隔符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">        String s = &quot;我爱北京天安门，天安门上太阳升&quot;;</span><br><span class="line">        Scanner scanner = new Scanner(s);</span><br><span class="line">        scanner.useDelimiter(&quot;天安门&quot;);</span><br><span class="line">        while (scanner.hasNext())</span><br><span class="line">            System.out.println(scanner.next());</span><br><span class="line"></span><br><span class="line">output:</span><br><span class="line">我爱北京</span><br><span class="line">，</span><br><span class="line">上太阳升</span><br></pre></td></tr></table></figure>
+<p>delimiter()返回当前匹配分隔符的Pattern。</p>
+<h4 id="三、输入字符"><a href="#三、输入字符" class="headerlink" title="三、输入字符"></a>三、输入字符</h4><p>不存在nextChar()方法，可以通过输入字符串转成字符数组。字符串通过charAt()定位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        String str = &quot;abcdefg&quot;;</span><br><span class="line">        Scanner scanner = new Scanner(str);</span><br><span class="line">        char[] ch = new char[str.length()];</span><br><span class="line">        for(int i=0; i&lt;str.length(); i++) &#123;</span><br><span class="line">            //用charAt();进行定位分隔</span><br><span class="line">            ch[i] = str.charAt(i);</span><br><span class="line">            System.out.print(ch[i] + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(ch.length);</span><br><span class="line"></span><br><span class="line">output:</span><br><span class="line">a b c d e f g 7</span><br></pre></td></tr></table></figure>
+
+<h4 id="四、用于检验输入：hasNextXXX"><a href="#四、用于检验输入：hasNextXXX" class="headerlink" title="四、用于检验输入：hasNextXXX()"></a>四、用于检验输入：hasNextXXX()</h4><p>例如：检验整数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Scanner  sc=new Scanner(System.in);</span><br><span class="line">int a=0;</span><br><span class="line">if(sc.hasNextInt())</span><br><span class="line">&#123;</span><br><span class="line">	a=sc.nextInt();	</span><br><span class="line">	System.out.println(a);</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">	System.out.println(&quot;输入的不是整数&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/12/20220512BS-05/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1257,7 +1331,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/GANRDEN010.github.io/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
