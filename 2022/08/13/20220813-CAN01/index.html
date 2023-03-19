@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/GANRDEN010.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/GANRDEN010.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/GANRDEN010.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/GANRDEN010.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"garden010.github.io","root":"/GANRDEN010.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、车载网络概述1.1 车载网络起源及CAN诞生条件 二十世纪九十年代前，传统汽车的电器系统中各个模块之间采用点对点的通信方式，造成了庞大的布线系统，加之汽车近年来电子化、智能化趋势，独立运行的ECU足以实现电子功能。但工程师们很快就意识到，ECU彼此协调工作可以极大地增强车辆功能。 最初，ECU之间数据交换是以传统方式实现的，即为每一个传输信号分配一个物理通信通道，既布线规模大，又造成了数据交换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【车载网络学习-01】 CAN总线概述">
+<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/index.html">
+<meta property="og:site_name" content="Garden">
+<meta property="og:description" content="一、车载网络概述1.1 车载网络起源及CAN诞生条件 二十世纪九十年代前，传统汽车的电器系统中各个模块之间采用点对点的通信方式，造成了庞大的布线系统，加之汽车近年来电子化、智能化趋势，独立运行的ECU足以实现电子功能。但工程师们很快就意识到，ECU彼此协调工作可以极大地增强车辆功能。 最初，ECU之间数据交换是以传统方式实现的，即为每一个传输信号分配一个物理通信通道，既布线规模大，又造成了数据交换">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/1.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/2.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/4.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/5.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/9.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/7.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/8.png">
+<meta property="article:published_time" content="2022-08-13T13:39:19.000Z">
+<meta property="article:modified_time" content="2022-08-14T07:53:10.000Z">
+<meta property="article:author" content="Garden">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/1.png">
+
+<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【车载网络学习-01】 CAN总线概述 | Garden</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/GANRDEN010.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Garden</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">须知少时凌云志，曾许人间第一流</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/GANRDEN010.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/GANRDEN010.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/08/13/20220813-CAN01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
+      <meta itemprop="name" content="Garden">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Garden">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【车载网络学习-01】 CAN总线概述
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-13 21:39:19" itemprop="dateCreated datePublished" datetime="2022-08-13T21:39:19+08:00">2022-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-14 15:53:10" itemprop="dateModified" datetime="2022-08-14T15:53:10+08:00">2022-08-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、车载网络概述"><a href="#一、车载网络概述" class="headerlink" title="一、车载网络概述"></a>一、车载网络概述</h2><h3 id="1-1-车载网络起源及CAN诞生条件"><a href="#1-1-车载网络起源及CAN诞生条件" class="headerlink" title="1.1 车载网络起源及CAN诞生条件"></a>1.1 车载网络起源及CAN诞生条件</h3><ul>
+<li>二十世纪九十年代前，传统汽车的电器系统中各个模块之间采用点对点的通信方式，造成了庞大的布线系统，加之汽车近年来电子化、智能化趋势，独立运行的ECU足以实现电子功能。但工程师们很快就意识到，ECU彼此协调工作可以极大地增强车辆功能。</li>
+<li>最初，ECU之间数据交换是以传统方式实现的，即为每一个传输信号分配一个物理通信通道，既布线规模大，又造成了数据交换、节点协助困难，因此解决这一难题的方法是通过单个通信通道（总线）进行串行位数据交换。</li>
+<li>CAN具有数据传输非常可靠的特点，可以满足应用领域的实时要求。</li>
+</ul>
+<img src="/GANRDEN010.github.io/2022/08/13/20220813-CAN01/1.png" class title="image">
+<img src="/GANRDEN010.github.io/2022/08/13/20220813-CAN01/2.png" class title="image">
+<img src="/GANRDEN010.github.io/2022/08/13/20220813-CAN01/4.png" class title="image">
+
+<h4 id="1-1-1-ECU"><a href="#1-1-1-ECU" class="headerlink" title="1.1.1 ECU"></a>1.1.1 ECU</h4><p>ECU(electronic control unit)电子控制单元，简单理解就是汽车里控制某个具体功能的模块。常见的ECU比如：ABS（防抱死系统）、EMS（引擎管理系统）、电子防盗系统、自动空调等。各个ECU直接通过车载网络进行通信。</p>
+<h4 id="1-1-2-CAN总线概述"><a href="#1-1-2-CAN总线概述" class="headerlink" title="1.1.2 CAN总线概述"></a>1.1.2 CAN总线概述</h4><ul>
+<li><p>CAN（controller area network）控制器局域网络，最初CAN总线由德国Bosch（博世）公司设计，现在世界上几乎所有汽车制造商都在使用。</p>
+</li>
+<li><p>CAN发展简史</p>
+<ol>
+<li>1983年，德国Bosch公司开发设计了CAN总线协议。</li>
+<li>1987年，第一块CAN控制器芯片有Intel设计成功。</li>
+<li>1991年，CAN2.0发布（A标准格式+B扩展格式,标准CAN 主要发布扩展帧来解决标准帧仲裁ID位数不够的问题）</li>
+<li>1993年，CAN成为ISO标准，分ISO 11898高速应用和ISO 11519低速应用。</li>
+<li>2012-2015年，CAN-FD发布。</li>
+</ol>
+</li>
+</ul>
+<h2 id="二、CAN标准"><a href="#二、CAN标准" class="headerlink" title="二、CAN标准"></a>二、CAN标准</h2><p>CAN协议仅包括数据链路层和物理层。从下往上：</p>
+<ol>
+<li>CIA DS-102规定了CAN总线接头（推荐sub-D9，未强制使用）</li>
+<li>ISO 11898-3、ISO 11898-2区别于低速/高速CAN，对速率有要求。高速（如电机等）用ISO 11898-2（最高1M/S）；低速（如雨刮等）用ISO 11898-3（125k/s）。</li>
+<li>ISO 11898-1对应controller控制器</li>
+</ol>
+<p>边界条件</p>
+<ol>
+<li>长度40米</li>
+<li>速率最大1M/s</li>
+<li>网络末端要有终端电阻（防止高频反射）</li>
+<li>根据收发器负载能力挂载节点</li>
+</ol>
+<img src="/GANRDEN010.github.io/2022/08/13/20220813-CAN01/5.png" class title="image">
+
+<p>CAN网络示意图：<br>对应ISO11898协议去看</p>
+<p>物理构成：</p>
+<img src="/GANRDEN010.github.io/2022/08/13/20220813-CAN01/9.png" class title="image">
+
+<p>host主机（人控制的部分）——CAN控制器——CAN收发器</p>
+<p>控制器根据需要接收message。根据条件，有的需要携带对象存储器有的不需要（相当于收的信息多要加个内存，一般都有）。直接显示逻辑位（1/0）</p>
+<p>收发器分为低速CAN和高速CAN收发器。收发器链接控制器和总线，如果总线上有很高的电平，只会破坏收发器而不会破坏到控制器（保护作用）</p>
+<ul>
+<li><p>低速CAN波特率0-125k/s，不需要终端电阻。看逻辑电平隐性1时是CAN_L比CAN_H要高5V,显性0时是CAN_H比CAN_L高2V左右。</p>
+</li>
+<li><p>高速CAN波特率0-1M/s，要接一个120Ω的终端电阻。看逻辑电平隐性1时是CAN_L和CAN_H相同都是2.5V，压差为0；显性0时是CAN_H比CAN_L高2V。</p>
+</li>
+<li><p>显性电平优先级高于隐性电平。当不同CAN节点同时发送显性和隐性总线电平时，CAN总线将呈现显性总线电平。只有当所有CAN节点都发送隐性电平时，CAN总线才呈现隐性总线电平。</p>
+<img src="/GANRDEN010.github.io/2022/08/13/20220813-CAN01/7.png" class title="image">
+<img src="/GANRDEN010.github.io/2022/08/13/20220813-CAN01/8.png" class title="image"></li>
+</ul>
+<h3 id="三、CAN特性"><a href="#三、CAN特性" class="headerlink" title="三、CAN特性"></a>三、CAN特性</h3><h4 id="3-1-双线差分信号"><a href="#3-1-双线差分信号" class="headerlink" title="3.1 双线差分信号"></a>3.1 双线差分信号</h4><h4 id="3-2-协议本身对节点数量无限制，ID决定报文优先级"><a href="#3-2-协议本身对节点数量无限制，ID决定报文优先级" class="headerlink" title="3.2 协议本身对节点数量无限制，ID决定报文优先级"></a>3.2 协议本身对节点数量无限制，ID决定报文优先级</h4><p>多主方式工作，网络上任意一个节点均可以在任意时刻主动向网络上的其他节点发送信息，不分主从，方便灵活。广播式发送报文，各个节点可以同时接收。（为了保证报文正确性：发送前检测，发送中回读）</p>
+<p>CAN中无“地址”概念，通过报文ID收发信息。广播——&gt;单播/组播</p>
+<p>优先级由报文ID确定，ID越小优先级越高（高位0覆盖1）</p>
+<h4 id="3-3-保证系统数据一致性"><a href="#3-3-保证系统数据一致性" class="headerlink" title="3.3 保证系统数据一致性"></a>3.3 保证系统数据一致性</h4><p>CAN提供了一套复杂的错误检测与错误处理机制，比如CRC检测、接口的抗电磁干扰能力、错误报文的自动重发、临时错误的恢复以及永久错误的关闭。</p>
+<h4 id="3-4-编码方式：NRZ-位填充"><a href="#3-4-编码方式：NRZ-位填充" class="headerlink" title="3.4 编码方式：NRZ+位填充"></a>3.4 编码方式：NRZ+位填充</h4><p>NRZ(Non return zero)：不归零制，与曼彻斯特编码相比无跳变但是可携带更多信息，位填充解决了长时间无跳变易产生误差的问题。</p>
+<p>位填充：五个相同电平跳变一次。（填充位置和帧结构有关，下节说明）</p>
+<h4 id="3-5-CSMA-CA协议支持-很重要"><a href="#3-5-CSMA-CA协议支持-很重要" class="headerlink" title="3.5 CSMA/CA协议支持(很重要)"></a>3.5 CSMA/CA协议支持(很重要)</h4><h5 id="3-5-1-CSMA-CA协议发展"><a href="#3-5-1-CSMA-CA协议发展" class="headerlink" title="3.5.1 CSMA/CA协议发展"></a>3.5.1 CSMA/CA协议发展</h5><p>CSMA/CA，（Carrier Sense Multiple Access with Collision Avoid），即带有 冲突避免 的 载波侦听 多路访问。</p>
+<p>是一种数据传输时避免各站点之间数据传输冲突的算法，其特点是发送包的同时不能检测到信道上有无冲突，只能尽量“避免”。</p>
+<p>CS：载波侦听，发送前听信道上有无报文在发送，有的话就等待。</p>
+<p>MA：多路访问，允许多个节点同时向总线收发信息。</p>
+<p>CA：冲突避免，这里主要通过“非破坏性仲裁机制”完成，后一节讲帧结构会详细讲解。</p>
+<ul>
+<li><p>发展<br>纯ALOHA——时隙ALOHA——CSMA/CA</p>
+<ol>
+<li><p>纯ALOHA：发前不检测，长时间未收到确认帧认为信道有冲突，随机退避等待后重发，直至收到确认帧发送成功。问题：容易一直冲突，信道吞吐量低。</p>
+</li>
+<li><p>时隙ALOHA：把各个节点在时间上同步起来，并把时间化成一段段等长时隙slot，规定在每个时隙开始时才能发送报文（发送前先不确认是否有节点同时正在发送，所以先缓存一个周期时隙再发送）当发送碰撞时策略不变（随机退避）。理论上效率翻倍。</p>
+</li>
+<li><p>CSMA：相比就只多了个对信道的载波侦听装置，其余策略基本不变。</p>
+</li>
+</ol>
+</li>
+<li><p>三种CSMA</p>
+<ol>
+<li><p>1-坚持CSMA：信道空闲就发送，忙则一直等待但一直监听信道，冲突随机退避。（产生冲突可能性大）</p>
+</li>
+<li><p>非坚持CSMA：信道空闲就发送，忙则放弃，随机退避后再侦听信道。（降低冲突发送概率，但是会增加平均时延）</p>
+</li>
+<li><p>p-CSMA：如果信道空闲，会有P的概率发送报文，同时有（1-P）的概率在下一个时隙发送，如果下一个时隙信道仍然空闲，重复上述做法。（前两者的折中策略）</p>
+</li>
+</ol>
+</li>
+</ul>
+<p>资料来源Vectoe官网：elearning.vector.com</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/06/03/20220603-diary/" rel="prev" title="【学习日记】20220603">
+      <i class="fa fa-chevron-left"></i> 【学习日记】20220603
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/08/14/20220814-CAN02/" rel="next" title="【车载网络学习-02】 CAN数据帧">
+      【车载网络学习-02】 CAN数据帧 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%BD%A6%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、车载网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E8%BD%A6%E8%BD%BD%E7%BD%91%E7%BB%9C%E8%B5%B7%E6%BA%90%E5%8F%8ACAN%E8%AF%9E%E7%94%9F%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 车载网络起源及CAN诞生条件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-ECU"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 ECU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-CAN%E6%80%BB%E7%BA%BF%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 CAN总线概述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81CAN%E6%A0%87%E5%87%86"><span class="nav-number">2.</span> <span class="nav-text">二、CAN标准</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81CAN%E7%89%B9%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">三、CAN特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E5%8F%8C%E7%BA%BF%E5%B7%AE%E5%88%86%E4%BF%A1%E5%8F%B7"><span class="nav-number">2.1.1.</span> <span class="nav-text">3.1 双线差分信号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E5%8D%8F%E8%AE%AE%E6%9C%AC%E8%BA%AB%E5%AF%B9%E8%8A%82%E7%82%B9%E6%95%B0%E9%87%8F%E6%97%A0%E9%99%90%E5%88%B6%EF%BC%8CID%E5%86%B3%E5%AE%9A%E6%8A%A5%E6%96%87%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">2.1.2.</span> <span class="nav-text">3.2 协议本身对节点数量无限制，ID决定报文优先级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E4%BF%9D%E8%AF%81%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.3 保证系统数据一致性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F%EF%BC%9ANRZ-%E4%BD%8D%E5%A1%AB%E5%85%85"><span class="nav-number">2.1.4.</span> <span class="nav-text">3.4 编码方式：NRZ+位填充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-CSMA-CA%E5%8D%8F%E8%AE%AE%E6%94%AF%E6%8C%81-%E5%BE%88%E9%87%8D%E8%A6%81"><span class="nav-number">2.1.5.</span> <span class="nav-text">3.5 CSMA&#x2F;CA协议支持(很重要)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-1-CSMA-CA%E5%8D%8F%E8%AE%AE%E5%8F%91%E5%B1%95"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">3.5.1 CSMA&#x2F;CA协议发展</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Garden</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/GANRDEN010.github.io/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Garden</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/GANRDEN010.github.io/lib/anime.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/GANRDEN010.github.io/js/utils.js"></script>
+
+<script src="/GANRDEN010.github.io/js/motion.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

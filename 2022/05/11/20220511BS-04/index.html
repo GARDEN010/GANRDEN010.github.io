@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/GANRDEN010.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/GANRDEN010.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/GANRDEN010.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/GANRDEN010.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"garden010.github.io","root":"/GANRDEN010.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、写个base父模板‘#’处还未规定跳转页面，根据需求更改 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586&lt;!D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕设：基于机器学习的法律文书自动分类系统设计与实现__04登录注册模块">
+<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/index.html">
+<meta property="og:site_name" content="Garden">
+<meta property="og:description" content="一、写个base父模板‘#’处还未规定跳转页面，根据需求更改 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586&lt;!D">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/1.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/2.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/3.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/4.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/5.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/6.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/7.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/8.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/9.png">
+<meta property="article:published_time" content="2022-05-10T16:16:20.000Z">
+<meta property="article:modified_time" content="2022-05-12T13:02:10.000Z">
+<meta property="article:author" content="Garden">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/1.png">
+
+<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>毕设：基于机器学习的法律文书自动分类系统设计与实现__04登录注册模块 | Garden</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/GANRDEN010.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Garden</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">须知少时凌云志，曾许人间第一流</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/GANRDEN010.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/GANRDEN010.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/11/20220511BS-04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
+      <meta itemprop="name" content="Garden">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Garden">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          毕设：基于机器学习的法律文书自动分类系统设计与实现__04登录注册模块
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-11 00:16:20" itemprop="dateCreated datePublished" datetime="2022-05-11T00:16:20+08:00">2022-05-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-12 21:02:10" itemprop="dateModified" datetime="2022-05-12T21:02:10+08:00">2022-05-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="一、写个base父模板"><a href="#一、写个base父模板" class="headerlink" title="一、写个base父模板"></a>一、写个base父模板</h3><p>‘#’处还未规定跳转页面，根据需求更改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&#123;% block title %&#125;&#123;% endblock %&#125;&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;&#123; url_for(&#x27;static&#x27;,filename=&#x27;bootstrap5/bootstrap.min.css&#x27;) &#125;&#125;&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;&#123; url_for(&#x27;static&#x27;,filename=&#x27;bootstrap5/font/bootstrap-icons.css&#x27;) &#125;&#125;&quot;&gt;</span><br><span class="line">    &#123;#要保证jQuery在前面，否则轮播图这里会报错#&#125;</span><br><span class="line">    &lt;script src=&quot;static/jquery/jQuery.3.6.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;static/bootstrap5/font/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &#123;% block head  %&#125;&#123;% endblock %&#125;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body style=&quot;background-color: #eef4f8&quot;&gt;</span><br><span class="line">&#123;#容器方便布局，而且最小化后也不会乱；容器分12份，col-x就代表这个方块占了x份#&#125;</span><br><span class="line"></span><br><span class="line">&#123;#这里是header#&#125;</span><br><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;col&quot;&gt;</span><br><span class="line">      &lt;nav class=&quot;navbar navbar-expand-lg &quot; style=&quot;height: 80px;background-color: #5f626c&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;container-fluid&quot;&gt;</span><br><span class="line">    &lt;a class=&quot;navbar-brand text-white&quot; href=&quot;#&quot; style=&quot;margin-left: 50px&quot;&gt;法律文书自动分类系统&lt;/a&gt;</span><br><span class="line">    &lt;form class=&quot;d-flex&quot; role=&quot;search&quot;&gt;</span><br><span class="line">        &lt;input class=&quot;form-control me-2&quot; type=&quot;search&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot; style=&quot;width: 500px&quot;&gt;</span><br><span class="line">        &lt;button class=&quot;btn btn-outline-success text-white&quot; type=&quot;submit&quot;&gt;&lt;i class=&quot;bi bi-search&quot;&gt;&lt;/i&gt;  Search&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">      &lt;div class=&quot;navbar-nav&quot; style=&quot;margin-right: 50px&quot;&gt;</span><br><span class="line">        &lt;i class=&quot;bi bi-person&quot; style=&quot;font-size: 25px;color: white&quot;&gt;&lt;/i&gt;</span><br><span class="line">        &lt;a class=&quot;nav-link text-white&quot; href=&quot;#&quot;&gt;登录&lt;/a&gt;</span><br><span class="line">        &lt;a class=&quot;nav-link text-white&quot; href=&quot;#&quot; &gt;注册&lt;/a&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/nav&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;container&quot; &gt;</span><br><span class="line">&lt;div class=&quot;row&quot; style=&quot;height: 600px&quot; &gt;</span><br><span class="line">&#123;#这里是侧边栏#&#125;</span><br><span class="line">&lt;div class=&quot;col-2&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;ul class=&quot;navbar-nav&quot; style=&quot;background-color: #5f626c;height: 100%&quot;&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line"></span><br><span class="line">      &lt;a class=&quot;nav-link text-white&quot; href=&quot;#&quot; style=&quot;margin-left: 50px;margin-top: 20px&quot;&gt;&lt;i class=&quot;bi bi-bank&quot;&gt;&lt;/i&gt;  首页&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">      &lt;a class=&quot;nav-link text-white&quot; href=&quot;#&quot; style=&quot;margin-left: 50px;margin-top: 20px&quot;&gt;&lt;i class=&quot;bi bi-palette2&quot;&gt;&lt;/i&gt;  模型展示&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">      &lt;a class=&quot;nav-link text-white&quot; href=&quot;#&quot; style=&quot;margin-left: 50px;margin-top: 20px&quot;&gt;&lt;i class=&quot;bi bi-files&quot;&gt;&lt;/i&gt;  文本分类&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">      &lt;a class=&quot;nav-link text-white&quot; href=&quot;#&quot; style=&quot;margin-left: 50px;margin-top: 20px&quot;&gt;&lt;i class=&quot;bi bi-stickies&quot;&gt;&lt;/i&gt;  可视化展示&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">      &lt;a class=&quot;nav-link text-white&quot; href=&quot;#&quot; style=&quot;margin-left: 50px;margin-top: 20px;margin-bottom: 20px&quot;&gt;&lt;i class=&quot;bi bi-folder&quot;&gt;&lt;/i&gt;  数据库浏览&lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;#这里是main任务栏，子模板会完成该部分#&#125;</span><br><span class="line">&lt;div class=&quot;col&quot;&gt;</span><br><span class="line">  &#123;% block body %&#125;&#123;% endblock %&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&#123;#这里是footer#&#125;</span><br><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;#机器学习&lt;/a&gt; |</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;#文本分类&lt;/a&gt; |</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;#bootstrap5中文文档&lt;/a&gt; |</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;#flask&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、子模板基础，以首页为例，其他页面相同"><a href="#二、子模板基础，以首页为例，其他页面相同" class="headerlink" title="二、子模板基础，以首页为例，其他页面相同"></a>二、子模板基础，以首页为例，其他页面相同</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line">&#123;% block title %&#125;首页&#123;% endblock %&#125;</span><br><span class="line">&#123;% block body %&#125;</span><br><span class="line">&#123;#  轮播图#&#125;</span><br><span class="line">&lt;div id=&quot;carouselExampleIndicators&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot; style=&quot;padding-right:30px;padding-top: 10px&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;carousel-indicators&quot; &gt;</span><br><span class="line">    &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot; aria-current=&quot;true&quot; aria-label=&quot;Slide 1&quot;&gt;&lt;/button&gt;</span><br><span class="line">    &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;1&quot; aria-label=&quot;Slide 2&quot;&gt;&lt;/button&gt;</span><br><span class="line">    &lt;button type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide-to=&quot;2&quot; aria-label=&quot;Slide 3&quot;&gt;&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;carousel-inner&quot; style=&quot;height: 200px&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;carousel-item active&quot;&gt;</span><br><span class="line">      &lt;img src=&quot;static/img/1.png&quot; class=&quot;d-block w-100&quot; &gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;carousel-item&quot;&gt;</span><br><span class="line">      &lt;img src=&quot;static/img/2.png&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;carousel-item&quot;&gt;</span><br><span class="line">      &lt;img src=&quot;static/img/3.png&quot; class=&quot;d-block w-100&quot; alt=&quot;...&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;button class=&quot;carousel-control-prev&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide=&quot;prev&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">  &lt;button class=&quot;carousel-control-next&quot; type=&quot;button&quot; data-bs-target=&quot;#carouselExampleIndicators&quot; data-bs-slide=&quot;next&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;#关于#&#125;</span><br><span class="line">&lt;div class=&quot;row&quot; style=&quot;padding-left: 30px&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;li style=&quot;margin-top: 20px&quot;&gt;本课题的研究方向是设计并实现一套能够对用户输入的法律文书进行分类的系统，从而节约人力成本，提高分类效率。文书数据参考中国裁判文书网，将文书分为三类：民事案件、刑事案件、行政案件。本论文将会运用朴素贝叶斯的思想，将用户输入的文本进行分类。&lt;/li&gt;</span><br><span class="line">    &lt;li style=&quot;margin-top: 20px&quot;&gt;在使用分类功能前，请先注册/登录&lt;/li&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="路由注册"><a href="#路由注册" class="headerlink" title="路由注册"></a>路由注册</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># Flask包中导入flask对象</span><br><span class="line"># render_template:渲染模板</span><br><span class="line">from flask import Flask,render_template</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 使用Flask创建一个app对象,并传递__name__参数，是固定的</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"># 路由，设置访问的URL，这里是设置一个根路径，当访问根路径的时候就会执行这个hello_world()函数</span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def hello_world():  # put application&#x27;s code here</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br><span class="line"></span><br><span class="line"># url必须以/开头，否则会报错（ValueError: urls must start with a leading slash）</span><br><span class="line">@app.route(&quot;/index&quot;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/1.png" class title="1.png">
+
+
+<h3 id="二、登录注册功能"><a href="#二、登录注册功能" class="headerlink" title="二、登录注册功能"></a>二、登录注册功能</h3><h4 id="1-新建register-html和login-html，继承父模板"><a href="#1-新建register-html和login-html，继承父模板" class="headerlink" title="1.新建register.html和login.html，继承父模板"></a>1.新建register.html和login.html，继承父模板</h4><h4 id="2-项目目录下新建blueprints文件夹，里面再创建user-py，用于注册路由以及写方法。（同时把app-py也搬进去）-首页和分类功能写在classify-py中"><a href="#2-项目目录下新建blueprints文件夹，里面再创建user-py，用于注册路由以及写方法。（同时把app-py也搬进去）-首页和分类功能写在classify-py中" class="headerlink" title="2.项目目录下新建blueprints文件夹，里面再创建user.py，用于注册路由以及写方法。（同时把app.py也搬进去）,首页和分类功能写在classify.py中"></a>2.项目目录下新建blueprints文件夹，里面再创建user.py，用于注册路由以及写方法。（同时把app.py也搬进去）,首页和分类功能写在classify.py中</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># user.py:</span><br><span class="line"></span><br><span class="line"> # Flask包中导入flask对象</span><br><span class="line">from flask import (</span><br><span class="line">    Blueprint,  # 导入蓝图</span><br><span class="line">    render_template,  # render_template:渲染模板</span><br><span class="line">    request,</span><br><span class="line">    redirect,</span><br><span class="line">    url_for,</span><br><span class="line">    jsonify,</span><br><span class="line">    session,</span><br><span class="line">    flash</span><br><span class="line">)</span><br><span class="line"># url_prefix视图前缀</span><br><span class="line">bp = Blueprint(&quot;user&quot;,__name__,url_prefix=&quot;/user&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@bp.route(&quot;/login&quot;)</span><br><span class="line">def login():</span><br><span class="line">    return render_template(&quot;login.html&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@bp.route(&quot;/register&quot;)</span><br><span class="line">def login():</span><br><span class="line">    return render_template(&quot;register.html&quot;)</span><br><span class="line"></span><br><span class="line"># classify.py:</span><br><span class="line"># Flask包中导入flask对象</span><br><span class="line"># render_template:渲染模板</span><br><span class="line">from flask import Flask,render_template</span><br><span class="line"># 导入蓝图</span><br><span class="line">from flask import Blueprint</span><br><span class="line"># url_prefix视图前缀</span><br><span class="line">bp = Blueprint(&quot;classify&quot;,__name__,url_prefix=&quot;/&quot;)</span><br><span class="line"></span><br><span class="line">@bp.route(&quot;/&quot;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br><span class="line"></span><br><span class="line"># init.py:</span><br><span class="line">from .user import bp as user_bp</span><br><span class="line">from .classify import bp as classify_bp</span><br></pre></td></tr></table></figure>
+<p>此时的app.py:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Flask包中导入flask对象</span><br><span class="line"># render_template:渲染模板</span><br><span class="line">from flask import Flask,render_template</span><br><span class="line">import config</span><br><span class="line">from exts import db</span><br><span class="line">from blueprints import user_bp,classify_bp</span><br><span class="line"></span><br><span class="line"># 使用Flask创建一个app对象,并传递__name__参数，是固定的</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"># 绑定config</span><br><span class="line">app.config.from_object(config)</span><br><span class="line">db.init_app(app)</span><br><span class="line"># 注册蓝图信息</span><br><span class="line">app.register_blueprint(user_bp)</span><br><span class="line">app.register_blueprint(classify_bp)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-完善登录注册的html页面"><a href="#3-完善登录注册的html页面" class="headerlink" title="3.完善登录注册的html页面"></a>3.完善登录注册的html页面</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">#login.html:</span><br><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;法律文书分类系统 - 登录&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block head %&#125;&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block body %&#125;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;row mt-5&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;col&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;col&quot;&gt;</span><br><span class="line">      &lt;form action=&quot;&#123;&#123; url_for(&quot;user.login&quot;) &#125;&#125;&quot; method=&quot;POST&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;mb-3&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;exampleInputEmail1&quot; class=&quot;form-label&quot;&gt;邮箱&lt;/label&gt;</span><br><span class="line">      &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail1&quot; aria-describedby=&quot;emailHelp&quot; name=&quot;email&quot;&gt;</span><br><span class="line">      &lt;div id=&quot;emailHelp&quot; class=&quot;form-text&quot;&gt;We&#x27;ll never share your information with anyone else.&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;mb-3&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;exampleInputPassword1&quot; class=&quot;form-label&quot;&gt;密码&lt;/label&gt;</span><br><span class="line">      &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;exampleInputPassword1&quot; name=&quot;password&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &#123;% for massage in get_flashed_messages() %&#125;</span><br><span class="line">        &lt;div class=&quot;from-group&quot;&gt;</span><br><span class="line">          &lt;div class=&quot;text-danger&quot;&gt;&#123;&#123; massage &#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line"></span><br><span class="line">        &lt;div class=&quot;from-group&quot;&gt;</span><br><span class="line">          &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary btn-sm&quot;&gt;登录&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;col&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line"># register.html:</span><br><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line">&#123;% block title %&#125;法律文书分类系统 - 注册&#123;% endblock %&#125;</span><br><span class="line">&#123;% block body %&#125;</span><br><span class="line">  &lt;div class=&quot;row mt-5&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;col&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;col&quot;&gt;</span><br><span class="line">      &lt;form action=&quot;&#123;&#123; url_for(&quot;user.login&quot;) &#125;&#125;&quot; method=&quot;POST&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;mb-3&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;exampleInputEmail1&quot; class=&quot;form-label&quot;&gt;邮箱&lt;/label&gt;</span><br><span class="line">      &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail1&quot; aria-describedby=&quot;emailHelp&quot; name=&quot;email&quot;&gt;</span><br><span class="line">      &lt;div id=&quot;emailHelp&quot; class=&quot;form-text&quot;&gt;We&#x27;ll never share your information with anyone else.&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;mb-3&quot;&gt;</span><br><span class="line">      &lt;label for=&quot;exampleInputPassword1&quot; class=&quot;form-label&quot;&gt;密码&lt;/label&gt;</span><br><span class="line">      &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;exampleInputPassword1&quot; name=&quot;password&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &#123;% for massage in get_flashed_messages() %&#125;</span><br><span class="line">        &lt;div class=&quot;from-group&quot;&gt;</span><br><span class="line">          &lt;div class=&quot;text-danger&quot;&gt;&#123;&#123; massage &#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &#123;% endfor %&#125;</span><br><span class="line"></span><br><span class="line">        &lt;div class=&quot;from-group&quot;&gt;</span><br><span class="line">          &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary btn-sm&quot;&gt;登录&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;col&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/2.png" class title="2.png">
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/3.png" class title="3.png">
+
+<h4 id="4-flask发送邮件"><a href="#4-flask发送邮件" class="headerlink" title="4.flask发送邮件"></a>4.flask发送邮件</h4><ol>
+<li>安装flask-mail</li>
+</ol>
+<p>pip install flask-mail</p>
+<ol start="2">
+<li>配置邮箱，config.py(这里用的qq邮箱)<br>打开qq邮箱-设置-账户-POP3/IMAP…-开启POP3/SMTP服务，然后qq密保手机验证即可。他会给你一个授权码，写在下面的MAIL_PASSWORD中。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 邮箱配置</span><br><span class="line">MAIL_SERVER = &quot;smtp.qq.com&quot;     # 固定写法</span><br><span class="line">MAIL_PORT = 465                 # 固定写法</span><br><span class="line">MAIL_USE_TLS = False            # 固定写法</span><br><span class="line">MAIL_USE_SSL = True             # 固定写法</span><br><span class="line">MAIL_DEBUG = True               # 固定写法</span><br><span class="line">MAIL_USERNAME = &quot;xxxx@qq.com&quot;</span><br><span class="line">MAIL_PASSWORD = &quot;xxxxxxxxxx&quot;</span><br><span class="line">MAIL_DEFAULT_SENDER = &quot;xxxx@qq.com&quot;</span><br></pre></td></tr></table></figure>
+设置完毕后这个qq邮箱就可以给别的邮箱发邮件了</li>
+</ol>
+<p>exts.py:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from flask_sqlalchemy import SQLAlchemy</span><br><span class="line">from flask_mail import Mail</span><br><span class="line"></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line">mail = Mail()</span><br></pre></td></tr></table></figure>
+<p>app.py中追加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from exts import db,mail</span><br><span class="line">mail.init_app(app)</span><br></pre></td></tr></table></figure>
+<p>测试：<br>在user.py中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Message是邮件发送的信息</span><br><span class="line">from flask_mail import Message</span><br><span class="line"></span><br><span class="line">@bp.route(&quot;/mail&quot;)</span><br><span class="line">def my_mail():</span><br><span class="line">    message = Message(</span><br><span class="line">        subject=&quot;邮箱测试&quot;,  #主题</span><br><span class="line">        recipients=[&#x27;xxx@163.com&#x27;],   #收邮件的邮箱</span><br><span class="line">        body=&quot;这是一篇测试邮箱&quot;   # 邮件主题</span><br><span class="line">    )</span><br><span class="line">    mail.send(message)</span><br><span class="line">    return &quot;success&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/4.png" class title="4.png">
+
+
+<h4 id="5-邮箱验证码"><a href="#5-邮箱验证码" class="headerlink" title="5.邮箱验证码"></a>5.邮箱验证码</h4><ol>
+<li><p>链接数据库</p>
+<blockquote>
+<p>SQLAlchemy:是一个独立的ORM框架，可以独立flask存在<br>Flask-SQLAlchemy:对SQLAlchemy的一个封装，更适合在flask里使用</p>
+</blockquote>
+</li>
+<li><p>安装</p>
+</li>
+</ol>
+<p>pip install pymysql</p>
+<p>pip install SQLAlchemy</p>
+<ol start="3">
+<li><p>链接数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># config.py</span><br><span class="line"></span><br><span class="line"># 数据库配置</span><br><span class="line">HOSTNAME = &#x27;127.0.0.1&#x27;</span><br><span class="line">PORT = &#x27;3306&#x27;</span><br><span class="line">DATABASE = &#x27;finalBS_flask&#x27;</span><br><span class="line">USERNAME = &#x27;root&#x27;</span><br><span class="line">PASSWORD = &#x27;123456&#x27;</span><br><span class="line">DB_URI = &#x27;mysql+pymysql://&#123;&#125;:&#123;&#125;@&#123;&#125;:&#123;&#125;/&#123;&#125;?charset=utf8&#x27;.format(USERNAME,PASSWORD,HOSTNAME,PORT,DATABASE)</span><br><span class="line">SQLALCHEMY_DATABASE_URI = DB_URI</span><br><span class="line">SQLALCHEMY_TRACK_MODIFICATIONS = True</span><br></pre></td></tr></table></figure></li>
+<li><p>新建models.py，创建模型（数据库表）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from exts import  db</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line"># 创建数据库表（模型)</span><br><span class="line">class EmailCaptchaModel(db.Model):</span><br><span class="line">    __tablename__ = &quot;email_captcha&quot;</span><br><span class="line">    id = db.Column(db.Integer,primary_key=True,autoincrement=True)</span><br><span class="line">    email = db.Column(db.String(100),nullable=False,unique=True)</span><br><span class="line">    captcha = db.Column(db.String(10),nullable=False)</span><br><span class="line">    create_time = db.Column(db.DateTime,default=datetime.now)</span><br></pre></td></tr></table></figure></li>
+<li><p>数据库表迁移</p>
+</li>
+</ol>
+<p>终端依次输入：</p>
+<p>flask db init</p>
+<p>flask db migrate</p>
+<p>flask db upgrade</p>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/5.png" class title="5.png">
+
+<ol start="6">
+<li><p>get测试是否能生成随机验证码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#user.py中：</span><br><span class="line"></span><br><span class="line">import string</span><br><span class="line">import random</span><br><span class="line">@bp.route(&quot;/captcha&quot;)</span><br><span class="line">def get_captcha():</span><br><span class="line">    # 生成验证码</span><br><span class="line">    letters = string.ascii_letters + string.digits</span><br><span class="line">    captcha = &quot;&quot;.join(random.sample(letters,4))</span><br><span class="line">    #获取邮箱</span><br><span class="line">    email = request.args.get(&quot;email&quot;)</span><br><span class="line">    if email:</span><br><span class="line">        message = Message(</span><br><span class="line">            subject=&quot;邮箱验证码&quot;,</span><br><span class="line">            recipients=[email],</span><br><span class="line">            body=f&quot;您的注册码是：&#123;captcha&#125;,请不要告诉任何人！&quot;,</span><br><span class="line">        )</span><br><span class="line">        mail.send(message)</span><br><span class="line">        return &quot;success&quot;</span><br><span class="line">    else:</span><br><span class="line">        return &quot;无对象&quot;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/6.png" class title="6.png"></li>
+<li><p>把邮箱和验证码都存在数据库中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">def get_captcha():</span><br><span class="line">    # 生成验证码</span><br><span class="line">    letters = string.ascii_letters + string.digits</span><br><span class="line">    captcha = &quot;&quot;.join(random.sample(letters,4))</span><br><span class="line">    #获取邮箱</span><br><span class="line">    email = request.args.get(&quot;email&quot;)</span><br><span class="line">    if email:</span><br><span class="line">        message = Message(</span><br><span class="line">            subject=&quot;邮箱验证码&quot;,</span><br><span class="line">            recipients=[email],</span><br><span class="line">            body=f&quot;您的注册码是：&#123;captcha&#125;,请不要告诉任何人！&quot;,</span><br><span class="line">        )</span><br><span class="line">        mail.send(message)</span><br><span class="line">        # 检查验证码在数据库中是否已存在,存在直接更新验证码，不存在才添加数据条目</span><br><span class="line">        captcha_model = EmailCaptchaModel.query.filter_by(email=email).first()</span><br><span class="line">        if captcha_model:</span><br><span class="line">            # 存在就去修改验证码，时间更改为当前时间（model里那个default只会在第一次保存数据库时生效，所以不用担心datatime相互覆盖）</span><br><span class="line">            captcha_model.captcha = captcha</span><br><span class="line">            captcha_model.create_time = datetime.now()</span><br><span class="line">            db.session.commit()</span><br><span class="line">        else:</span><br><span class="line">            captcha_model = EmailCaptchaModel(email=email, captcha=captcha)</span><br><span class="line">            db.session.add(captcha_model)</span><br><span class="line">            db.session.commit()</span><br><span class="line">            print(&quot;captcha&quot;, captcha)</span><br><span class="line">        return &quot;success&quot;</span><br><span class="line">    else:</span><br><span class="line">        return &quot;无对象&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/7.png" class title="7.png">
+
+<h4 id="6-实现注册功能"><a href="#6-实现注册功能" class="headerlink" title="6.实现注册功能"></a>6.实现注册功能</h4><ol>
+<li>新建用户模型</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># model里：</span><br><span class="line">class UserModel(db.Model):</span><br><span class="line">    __tablename__ = &quot;user&quot;</span><br><span class="line">    id = db.Column(db.Integer, primary_key=True, autoincrement=True)</span><br><span class="line">    username = db.Column(db.String(200), nullable=False, unique=True)</span><br><span class="line">    email = db.Column(db.String(100), nullable=False, unique=True)</span><br><span class="line">    # 位数多一点，便于加密</span><br><span class="line">    password = db.Column(db.String(200), nullable=False)</span><br><span class="line">    join_time = db.Column(db.DateTime, default=datetime.now)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>migrate同步到数据库</li>
+</ol>
+<p>flask db migrate</p>
+<p>flask db upgrade</p>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/8.png" class title="8.png">
+
+<ol start="3">
+<li>注册功能</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">@bp.route(&quot;/register&quot;,methods=[&#x27;GET&#x27;,&#x27;POST&#x27;])</span><br><span class="line">def register():</span><br><span class="line">    if request.method == &#x27;GET&#x27;:</span><br><span class="line">        return render_template(&quot;register.html&quot;)</span><br><span class="line">    else:</span><br><span class="line">        # 验证表单信息</span><br><span class="line">        form = RegisterForm(request.form)</span><br><span class="line">        if form.validate():</span><br><span class="line">            email = form.email.data</span><br><span class="line">            username = form.username.data</span><br><span class="line">            password = form.password.data</span><br><span class="line"></span><br><span class="line">            #md5(hash)，用于加密，在数据库中也无法看到密码是多少</span><br><span class="line">            hash_password = generate_password_hash(password)</span><br><span class="line">            user = UserModel(email=email, username=username, password=hash_password)</span><br><span class="line">            db.session.add(user)</span><br><span class="line">            db.session.commit()</span><br><span class="line">            # 注册成果返回登录页面，失败返回注册页</span><br><span class="line">            return redirect(url_for(&quot;user.login&quot;))</span><br><span class="line">        else:</span><br><span class="line">            return redirect(url_for(&quot;user.register&quot;))</span><br><span class="line"></span><br><span class="line"># forms验证：</span><br><span class="line">class RegisterForm(wtforms.Form):</span><br><span class="line">    # validators验证器</span><br><span class="line">    username = wtforms.StringField(validators=[length(min=1,max=20)])</span><br><span class="line">    email = wtforms.StringField(validators=[email()])</span><br><span class="line">    captcha = wtforms.StringField(validators=[length(min=4,max=4)])</span><br><span class="line">    password = wtforms.StringField(validators=[length(min=6,max=20)])</span><br><span class="line">    password_confirm = wtforms.StringField(validators=[EqualTo(&quot;password&quot;)])</span><br><span class="line"></span><br><span class="line">    # validate_xxx:去具体验证某一项</span><br><span class="line">    def validate_captcha(self,field):</span><br><span class="line">        captcha = field.data</span><br><span class="line">        email = self.email.data</span><br><span class="line">        captcha_model = EmailCaptchaModel.query.filter_by(email=email).first()</span><br><span class="line">        if not captcha_model or captcha_model.captcha.lower() != captcha.lower():</span><br><span class="line">            raise wtforms.ValidationError(&quot;邮箱验证码错误！&quot;)</span><br><span class="line"></span><br><span class="line">    def validate_email(self,field):</span><br><span class="line">        email = field.data</span><br><span class="line">        user_model = UserModel.query.filter_by(email=email).first()</span><br><span class="line">        if user_model:</span><br><span class="line">            raise wtforms.ValidationError(&quot;邮箱已注册&quot;)</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>写个发送验证码的js，同时把计时器搞上</li>
+</ol>
+<p>因为是post，所以记得把user.py里的get_captcha()也要改成post提交，否则汇报405</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">function bindCaptchaBtnClick()&#123;</span><br><span class="line">    $(&quot;#captcha_btn&quot;).on(&quot;click&quot;,function (event)&#123;</span><br><span class="line">       // 用$包裹表示这个按钮，不包裹等于这个函数</span><br><span class="line">        var $this = $(this)</span><br><span class="line">        // 获取input标签，获取email的值</span><br><span class="line">        var email = $(&quot;input[name=&#x27;email&#x27;]&quot;).val();</span><br><span class="line">        if(!email)&#123;</span><br><span class="line">            alert(&quot;请先输入邮箱！&quot;)</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        //通过Ajax发送网络请求</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url:&quot;/user/captcha&quot;,</span><br><span class="line">            method:&quot;POST&quot;,</span><br><span class="line">            data:&#123;</span><br><span class="line">                &quot;email&quot;:email</span><br><span class="line">            &#125;,</span><br><span class="line">            success:function (res)&#123;</span><br><span class="line">                var code = res[&#x27;code&#x27;];</span><br><span class="line">                if(code==200)&#123;</span><br><span class="line">                    //取消点击事件</span><br><span class="line">                    $this.off(&quot;click&quot;);</span><br><span class="line">                    //开始倒计时</span><br><span class="line">                    var countDown = 60;</span><br><span class="line">                    var timer = setInterval(function ()&#123;</span><br><span class="line">                        countDown-=1;</span><br><span class="line">                        if(countDown&gt;0)&#123;</span><br><span class="line">                             $this.text(countDown+&quot;秒后重新发送&quot;);</span><br><span class="line">                        &#125;else&#123;</span><br><span class="line">                            $this.text(&quot;获取验证码&quot;);</span><br><span class="line">                            //重新绑定点击事件;</span><br><span class="line">                            bindCaptchaBtnClick();</span><br><span class="line">                            //清除定时器</span><br><span class="line">                            clearInterval(timer);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                    &#125;,1000)</span><br><span class="line">                    alert(&quot;验证码发送成功&quot;);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    alert(res[&#x27;message&#x27;]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//等网页所有元素加载完成后执行</span><br><span class="line">$(function ()&#123;</span><br><span class="line">    bindCaptchaBtnClick();</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/11/20220511BS-04/9.png" class title="9.png">
+
+
+<h4 id="7-登录功能"><a href="#7-登录功能" class="headerlink" title="7.登录功能"></a>7.登录功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@bp.route(&quot;/login&quot;,methods=[&#x27;GET&#x27;,&#x27;POST&#x27;])</span><br><span class="line">def login():</span><br><span class="line">    if request.method == &#x27;GET&#x27;:</span><br><span class="line">        return render_template(&quot;login.html&quot;)</span><br><span class="line">    else:</span><br><span class="line">        form = LoginForm(request.form)</span><br><span class="line">        if form.validate():</span><br><span class="line">            email = form.email.data</span><br><span class="line">            password = form.password.data</span><br><span class="line">            user = UserModel.query.filter_by(email=email).first()</span><br><span class="line">            # 解密：check_password_hash(password1,password2)</span><br><span class="line">            if user and check_password_hash(user.password,password):</span><br><span class="line">                # 用户id放session中，便于下一次登录</span><br><span class="line">                session[&#x27;user_id&#x27;] = user.id</span><br><span class="line">                # 登录成功跳转到首页</span><br><span class="line">                return redirect(&quot;/&quot;)</span><br><span class="line">            else:</span><br><span class="line">                flash(&quot;邮箱和密码不匹配！&quot;)</span><br><span class="line">                return redirect(url_for(&quot;user.login&quot;))</span><br><span class="line">        else:</span><br><span class="line">            # 登录失败会登陆页面</span><br><span class="line">            flash(&quot;邮箱或密码格式错误！&quot;)</span><br><span class="line">            return redirect(url_for(&quot;user.login&quot;))</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="8-退出登录"><a href="#8-退出登录" class="headerlink" title="8.退出登录"></a>8.退出登录</h4><p>同时判断是否登录，未登录则要求先登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># app.py中：</span><br><span class="line"></span><br><span class="line">@app.before_request</span><br><span class="line">def before_request():</span><br><span class="line">    user_id = session.get(&quot;user_id&quot;)</span><br><span class="line">    # 如果session里id存在，用于判断是否有登录，未登录不给操作其他功能</span><br><span class="line">    if user_id:</span><br><span class="line">        try:</span><br><span class="line">            user = UserModel.query.get(user_id)</span><br><span class="line">            # 给g（全局变量）绑定一个叫做user的变量，值为user</span><br><span class="line">            g.user = user</span><br><span class="line">        except:</span><br><span class="line">            g.user = None</span><br><span class="line"></span><br><span class="line"># 一个请求来了，先执行befor_request，再执行视图函数，返回视图函数中模板，最后执行context_processor</span><br><span class="line"></span><br><span class="line">@app.context_processor</span><br><span class="line">def context_processor():</span><br><span class="line">    # hasattr()函数用于判断对象是否包含对应的属性。（对象，属性）</span><br><span class="line">    if hasattr(g,&quot;user&quot;):</span><br><span class="line">        return &#123;&quot;user&quot;:g.user&#125;</span><br><span class="line">    else:</span><br><span class="line">        return &#123;&#125;</span><br><span class="line"></span><br><span class="line"># base.html中更改下：</span><br><span class="line">&#123;% if user %&#125;</span><br><span class="line"></span><br><span class="line">       &lt;li class=&quot;nav-item&quot; &gt;</span><br><span class="line"></span><br><span class="line">          &lt;a class=&quot;nav-link active&quot; &gt;&lt;i class=&quot;bi bi-person-check&quot;&gt;&lt;/i&gt;  &#123;&#123; user.username &#125;&#125;&lt;/a&gt;</span><br><span class="line">          &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line"></span><br><span class="line">          &lt;a class=&quot;nav-link &quot; aria-current=&quot;page&quot; href=&quot;&#123;&#123; url_for(&#x27;user.logout&#x27;) &#125;&#125;&quot; style=&quot;color: #FFFFFF&quot;&gt; 注销&lt;/a&gt;</span><br><span class="line">       &#123;% else %&#125;</span><br><span class="line">            &lt;i class=&quot;bi bi-person&quot; style=&quot;font-size: 25px;color: white&quot;&gt;&lt;/i&gt;</span><br><span class="line">            &lt;a class=&quot;nav-link &quot; aria-current=&quot;page&quot; href=&quot;&#123;&#123; url_for(&#x27;user.login&#x27;) &#125;&#125;&quot; style=&quot;color: #FFFFFF&quot;&gt;登录&lt;/a&gt;</span><br><span class="line">            &lt;a class=&quot;nav-link &quot; aria-current=&quot;page&quot; href=&quot;&#123;&#123; url_for(&#x27;user.register&#x27;) &#125;&#125;&quot; style=&quot;color: #FFFFFF&quot;&gt;注册&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 再写个路由</span><br><span class="line">@bp.route(&quot;/logout&quot;)</span><br><span class="line">def logout():</span><br><span class="line">    session.clear()</span><br><span class="line">    return redirect(url_for(&#x27;user.login&#x27;))</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/09/20220509BS-03/" rel="prev" title="毕设：基于机器学习的法律文书自动分类系统设计与实现__03flask基础">
+      <i class="fa fa-chevron-left"></i> 毕设：基于机器学习的法律文书自动分类系统设计与实现__03flask基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/12/20220512BS-05/" rel="next" title="毕设：基于机器学习的法律文书自动分类系统设计与实现__05分类功能实现">
+      毕设：基于机器学习的法律文书自动分类系统设计与实现__05分类功能实现 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%99%E4%B8%AAbase%E7%88%B6%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">一、写个base父模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AD%90%E6%A8%A1%E6%9D%BF%E5%9F%BA%E7%A1%80%EF%BC%8C%E4%BB%A5%E9%A6%96%E9%A1%B5%E4%B8%BA%E4%BE%8B%EF%BC%8C%E5%85%B6%E4%BB%96%E9%A1%B5%E9%9D%A2%E7%9B%B8%E5%90%8C"><span class="nav-number">2.</span> <span class="nav-text">二、子模板基础，以首页为例，其他页面相同</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E6%B3%A8%E5%86%8C"><span class="nav-number">2.1.</span> <span class="nav-text">路由注册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">2.2.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E5%8A%9F%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">二、登录注册功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BAregister-html%E5%92%8Clogin-html%EF%BC%8C%E7%BB%A7%E6%89%BF%E7%88%B6%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.1.</span> <span class="nav-text">1.新建register.html和login.html，继承父模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%B0%E5%BB%BAblueprints%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E9%87%8C%E9%9D%A2%E5%86%8D%E5%88%9B%E5%BB%BAuser-py%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%B3%A8%E5%86%8C%E8%B7%AF%E7%94%B1%E4%BB%A5%E5%8F%8A%E5%86%99%E6%96%B9%E6%B3%95%E3%80%82%EF%BC%88%E5%90%8C%E6%97%B6%E6%8A%8Aapp-py%E4%B9%9F%E6%90%AC%E8%BF%9B%E5%8E%BB%EF%BC%89-%E9%A6%96%E9%A1%B5%E5%92%8C%E5%88%86%E7%B1%BB%E5%8A%9F%E8%83%BD%E5%86%99%E5%9C%A8classify-py%E4%B8%AD"><span class="nav-number">3.2.</span> <span class="nav-text">2.项目目录下新建blueprints文件夹，里面再创建user.py，用于注册路由以及写方法。（同时把app.py也搬进去）,首页和分类功能写在classify.py中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AE%8C%E5%96%84%E7%99%BB%E5%BD%95%E6%B3%A8%E5%86%8C%E7%9A%84html%E9%A1%B5%E9%9D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">3.完善登录注册的html页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-flask%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">4.flask发送邮件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E9%82%AE%E7%AE%B1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">3.5.</span> <span class="nav-text">5.邮箱验证码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%AE%9E%E7%8E%B0%E6%B3%A8%E5%86%8C%E5%8A%9F%E8%83%BD"><span class="nav-number">3.6.</span> <span class="nav-text">6.实现注册功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="nav-number">3.7.</span> <span class="nav-text">7.登录功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95"><span class="nav-number">3.8.</span> <span class="nav-text">8.退出登录</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Garden</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/GANRDEN010.github.io/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Garden</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/GANRDEN010.github.io/lib/anime.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/GANRDEN010.github.io/js/utils.js"></script>
+
+<script src="/GANRDEN010.github.io/js/motion.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/GANRDEN010.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/GANRDEN010.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/GANRDEN010.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/GANRDEN010.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"garden010.github.io","root":"/GANRDEN010.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、人工智能、机器学习、深度学习之间的关系 1956 年提出 AI 概念，短短3年后（1959） 亚瑟·塞缪尔(Arthur Samuel) 就提出了机器学习的概念：机器学习研究和构建的是一种特殊算法（而非某一个特定的算法），能够让计算机自己在数据中学习从而进行预测。机器学习不是某种具体的算法，而是很多算法的统称。 机器学习包含了很多种不同的算法，深度学习就是其中之一，其他方法包括决策树，聚类，贝">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕设：基于机器学习的法律文书自动分类系统设计与实现__02模型搭建">
+<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/index.html">
+<meta property="og:site_name" content="Garden">
+<meta property="og:description" content="一、人工智能、机器学习、深度学习之间的关系 1956 年提出 AI 概念，短短3年后（1959） 亚瑟·塞缪尔(Arthur Samuel) 就提出了机器学习的概念：机器学习研究和构建的是一种特殊算法（而非某一个特定的算法），能够让计算机自己在数据中学习从而进行预测。机器学习不是某种具体的算法，而是很多算法的统称。 机器学习包含了很多种不同的算法，深度学习就是其中之一，其他方法包括决策树，聚类，贝">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/1.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/2.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/3.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/4.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/5.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/6.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/7.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/8.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/9.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/10.png">
+<meta property="article:published_time" content="2022-05-08T03:06:23.000Z">
+<meta property="article:modified_time" content="2022-05-08T13:23:32.000Z">
+<meta property="article:author" content="Garden">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/1.png">
+
+<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>毕设：基于机器学习的法律文书自动分类系统设计与实现__02模型搭建 | Garden</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/GANRDEN010.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Garden</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">须知少时凌云志，曾许人间第一流</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/GANRDEN010.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/GANRDEN010.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/08/20220508BS-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
+      <meta itemprop="name" content="Garden">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Garden">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          毕设：基于机器学习的法律文书自动分类系统设计与实现__02模型搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-08 11:06:23 / 修改时间：21:23:32" itemprop="dateCreated datePublished" datetime="2022-05-08T11:06:23+08:00">2022-05-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="一、人工智能、机器学习、深度学习之间的关系"><a href="#一、人工智能、机器学习、深度学习之间的关系" class="headerlink" title="一、人工智能、机器学习、深度学习之间的关系"></a>一、人工智能、机器学习、深度学习之间的关系</h3><ul>
+<li>1956 年提出 AI 概念，短短3年后（1959） 亚瑟·塞缪尔(Arthur Samuel) 就提出了机器学习的概念：机器学习研究和构建的是一种特殊算法（而非某一个特定的算法），能够让计算机自己在数据中学习从而进行预测。机器学习不是某种具体的算法，而是很多算法的统称。</li>
+<li>机器学习包含了很多种不同的算法，深度学习就是其中之一，其他方法包括决策树，聚类，贝叶斯等。</li>
+<li>深度学习的灵感来自大脑的结构和功能，即许多神经元的互连。人工神经网络（ANN）是模拟大脑生物结构的算法</li>
+<li>不管是机器学习还是深度学习，都属于人工智能（AI）的范畴。</li>
+</ul>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/1.png" class title="1.png">
+
+<p> 机器学习的基本思路：</p>
+<ul>
+<li>把现实生活中的问题抽象成数学模型，并且很清楚模型中不同参数的作用</li>
+<li>利用数学方法对这个数学模型进行求解，从而解决现实生活中的问题</li>
+<li>评估这个数学模型，是否真正的解决了现实生活中的问题，解决的如何？</li>
+</ul>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/2.png" class title="2.png">
+
+
+<h3 id="二、机器学习分类"><a href="#二、机器学习分类" class="headerlink" title="二、机器学习分类"></a>二、机器学习分类</h3><h5 id="机器学习根据训练方法大致可以分为3大类：监督学习、非监督学习、强化学习"><a href="#机器学习根据训练方法大致可以分为3大类：监督学习、非监督学习、强化学习" class="headerlink" title="机器学习根据训练方法大致可以分为3大类：监督学习、非监督学习、强化学习"></a>机器学习根据训练方法大致可以分为3大类：监督学习、非监督学习、强化学习</h5><ol>
+<li>监督学习</li>
+</ol>
+<blockquote>
+<p>监督学习是指我们给算法一个数据集，并且给定正确答案。机器通过数据来学习正确答案的计算方法。</p>
+</blockquote>
+<p> 例如：我们准备了一大堆猫和狗的照片，我们想让机器学会如何识别猫和狗。当我们使用监督学习的时候，我们需要给这些照片打上标签。我们给照片打的标签就是“正确答案”，机器通过大量学习，就可以学会在新照片中认出猫和狗。这种学习方式效果非常好，但是成本也非常高。</p>
+<ol start="2">
+<li>非监督学习</li>
+</ol>
+<blockquote>
+<p>非监督学习中，给定的数据集没有“正确答案”，所有的数据都是一样的。无监督学习的任务是从给定的数据集中，挖掘出潜在的结构。</p>
+</blockquote>
+<p>我们把一堆猫和狗的照片给机器，不给这些照片打任何标签，但是我们希望机器能够将这些照片分分类。通过学习，机器会把这些照片分为2类，一类都是猫的照片，一类都是狗的照片。虽然跟上面的监督学习看上去结果差不多，但是有着本质的差别：<br>非监督学习中，虽然照片分为了猫和狗，但是机器并不知道哪个是猫，哪个是狗。对于机器来说，相当于分成了 A、B 两类。</p>
+<ol start="3">
+<li>强化学习</li>
+</ol>
+<p>强化学习更接近生物学习的本质，因此有望获得更高的智能。它关注的是智能体如何在环境中采取一系列行为，从而获得最大的累积回报。通过强化学习，一个智能体应该知道在什么状态下应该采取什么行为。（如==阿尔法狗==）</p>
+<h3 id="三-、15种经典机器学习算法"><a href="#三-、15种经典机器学习算法" class="headerlink" title="三 、15种经典机器学习算法"></a>三 、15种经典机器学习算法</h3><table>
+<thead>
+<tr>
+<th>算法</th>
+<th>训练方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性回归</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>逻辑回归</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>线性判别分析</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>决策树</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>朴素贝叶斯</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>K邻近</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>学习向量量化</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>支持向量机</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>随机森林</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>AdaBoost</td>
+<td>监督学习</td>
+</tr>
+<tr>
+<td>高斯混合模型</td>
+<td>非监督学习</td>
+</tr>
+<tr>
+<td>限制波尔兹曼机</td>
+<td>非监督学习</td>
+</tr>
+<tr>
+<td>K-means 聚类</td>
+<td>非监督学习</td>
+</tr>
+<tr>
+<td>最大期望算法</td>
+<td>非监督学习</td>
+</tr>
+</tbody></table>
+<h3 id="四、朴素贝叶斯"><a href="#四、朴素贝叶斯" class="headerlink" title="四、朴素贝叶斯"></a>四、朴素贝叶斯</h3><h4 id="1-贝叶斯公式"><a href="#1-贝叶斯公式" class="headerlink" title="1. 贝叶斯公式"></a>1. 贝叶斯公式</h4><p>贝叶斯主要解决逆向概率问题：</p>
+<ul>
+<li>正向概率：N个白球M个黑球，摸出白球的概率。</li>
+<li>逆向概率：不知道黑白球比例，按摸出的情况逆推。</li>
+<li>朴素：假设特征之间相互独立。</li>
+</ul>
+<p>公式：</p>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/3.png" class title="3.png">
+
+<p>P(A|B)为条件概率，B情况下A发生的概率；P(A)为先验概率。</p>
+<h4 id="2-朴素贝叶斯，举个栗子："><a href="#2-朴素贝叶斯，举个栗子：" class="headerlink" title="2. 朴素贝叶斯，举个栗子："></a>2. 朴素贝叶斯，举个栗子：</h4><p>有两个类别T1、T2，特征为A、B、C。现在去预测A3B3C3的类别：</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+<td>T1</td>
+</tr>
+<tr>
+<td>A1</td>
+<td>B2</td>
+<td>C1</td>
+<td>T2</td>
+</tr>
+<tr>
+<td>A1</td>
+<td>B1</td>
+<td>C2</td>
+<td>T1</td>
+</tr>
+<tr>
+<td>A1</td>
+<td>B1</td>
+<td>C3</td>
+<td>T2</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>B3</td>
+<td>C1</td>
+<td>T1</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>B1</td>
+<td>C1</td>
+<td>T2</td>
+</tr>
+</tbody></table>
+<p>此时带入贝叶斯公式：</p>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/4.png" class title="4.png">
+
+<p>假设特征相互独立（朴素）：</p>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/5.png" class title="5.png">
+
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/6.png" class title="6.png">
+
+<p>此时各项概率都能由图表得出，P(T2|A3B3C3)的概率同理，谁的概率高就属于哪一类。</p>
+<h3 id="二、-KNN-K-Near-Neighbor"><a href="#二、-KNN-K-Near-Neighbor" class="headerlink" title="二、 KNN(K Near Neighbor)"></a>二、 KNN(K Near Neighbor)</h3><ul>
+<li>k个最近的邻居，即每个样本都可以用它最接近的k个邻居来代表。一个样本与数据集中的k个样本最相似，如果这k个样本中的大多数属于某一个类别， 则该样本也属于这个类别。</li>
+<li>最简单的KNN就是X附近找K个训练元素，哪类多属于哪类。 </li>
+</ul>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/7.png" class title="7.png">
+
+<ul>
+<li>K值的选取和点距离的计算</li>
+</ul>
+<ol>
+<li>距离计算</li>
+</ol>
+<p>要度量空间中点距离的话，有好几种度量方式，比如常见的曼哈顿距离计算，欧式距离计算等等。不过通常KNN算法中使用的是欧式距离，这里只是简单说一下，拿二维平面为例，二维空间两个点的欧式距离计算公式如下：</p>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/8.png" class title="8.png">
+
+<p>2.K值选取</p>
+<p>通过交叉验证（将样本数据按照一定比例，拆分出训练用的数据和验证用的数据，比如8:2拆分出部分训练数据和验证数据），从选取一个较小的K值开始，不断增加K的值，然后计算验证集合的方差，最终找到一个比较合适的K值。</p>
+<p>当你增大k的时候，一般错误率会先降低，因为有周围更多的样本可以借鉴了，分类效果会变好。但注意，当K值更大的时候，错误率会更高。这也很好理解，比如说你一共就35个样本，当你K增大到30的时候，KNN基本上就没意义了。</p>
+<h3 id="五、-代码实现（通过sklearn库）"><a href="#五、-代码实现（通过sklearn库）" class="headerlink" title="五、 代码实现（通过sklearn库）"></a>五、 代码实现（通过sklearn库）</h3><h4 id="1-朴素贝叶斯"><a href="#1-朴素贝叶斯" class="headerlink" title="1. 朴素贝叶斯"></a>1. 朴素贝叶斯</h4><p>（1）流程</p>
+<p>数据预处理——切分数据集——保存模型数据——特征工程——创建预估器——模型评估</p>
+<p>（2）数据切分，保存模型数据</p>
+<blockquote>
+<p>经过测试，模型花费的主要时间是在分词、去停用词部分，pickle本质是保存一个变量的当前状态，故可以通过保存数据预处理后的数据状态来节约时间。</p>
+</blockquote>
+<p>切分数据：sklearn库中提供train_test_split()方法，这里按照8:2来切分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line"># x_train1,x_test1:训练集和测试集data   ;   y_train, y_test:对应的类别target,  训练集:测试集=8:2    都是list</span><br><span class="line">x_train1, x_test1, y_train, y_test = train_test_split(data, target, test_size=0.2)</span><br></pre></td></tr></table></figure>
+
+<p>模型数据保存：利用pickle模块进行保存（pip install pickle）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import pickle</span><br><span class="line"></span><br><span class="line">    def nb_data(self,data,target):</span><br><span class="line">        # 1.切分数据</span><br><span class="line">        # x_train1,x_test1:训练集和测试集data   ;   y_train, y_test:对应的类别target,  训练集:测试集=8:2    都是list</span><br><span class="line">        x_train1, x_test1, y_train, y_test = train_test_split(data, target, test_size=0.2)</span><br><span class="line">        # 放列表里</span><br><span class="line">        x_train = []</span><br><span class="line">        x_test = []</span><br><span class="line">        for i in x_train1:</span><br><span class="line">            str = &quot; &quot;.join(i)</span><br><span class="line">            x_train.append(str)</span><br><span class="line">        for i in x_test1:</span><br><span class="line">            str = &quot; &quot;.join(i)</span><br><span class="line">            x_test.append(str)</span><br><span class="line"></span><br><span class="line">        with open(&#x27;X_train.pkl&#x27;, &#x27;wb&#x27;) as f:</span><br><span class="line">            pickle.dump(x_train, f)</span><br><span class="line">        with open(&#x27;X_test.pkl&#x27;, &#x27;wb&#x27;) as f:</span><br><span class="line">            pickle.dump(x_test, f)</span><br><span class="line">        with open(&#x27;Y_train.pkl&#x27;, &#x27;wb&#x27;) as f:</span><br><span class="line">            pickle.dump(y_train, f)</span><br><span class="line">        with open(&#x27;Y_test.pkl&#x27;, &#x27;wb&#x27;) as f:</span><br><span class="line">            pickle.dump(y_test, f)</span><br><span class="line">            print(&quot;保存成功！&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>（3） 特征工程、模型评估</p>
+<ul>
+<li>特征抽取<br>一篇文章在经过了分词处理之后,会产生很多词条。如果一个文档所有词条都被作为其特征,将会使特征项异常庞大,而且这样的特征项会使得每个特征项所含信息非常平滑,有用信息反而不会突出。因此我们需要进行特征项选取,把词条中最能代表某类文本信息的词条挑选出来,作为文本的特征项。 </li>
+<li>TF-IDF：<br>TF-IDF是一种统计方法，用以评估一字词对于一个文件集或一个语料库中的其中一份文件的重要程度。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。其主要思想是：如果某个单词在一篇文章中出现的频率TF高，并且在其他文章中很少出现，则认为此词或者短语具有很好的类别区分能力，适合用来分类。</li>
+<li> 特征预处理：归一化、标准化</li>
+</ul>
+<ol>
+<li>归一化：<br>把数据变成（0,1）或者（1,1）之间的小数。主要是为了数据处理方便提出来的，把数据映射到0～1范围之内处理，更加便捷快速。把有量纲表达式变成无量纲表达式，便于不同单位或量级的指标能够进行比较和加权。归一化是一种简化计算的方式，即将有量纲的表达式，经过变换，化为无量纲的表达式，成为纯量。</li>
+<li>标准化：<br>标准化是依照特征矩阵的列处理数据。数据标准化方法有多种，如：直线型方法(如极值法、标准差法)、折线型方法(如三折线法)、曲线型方法(如半正态性分布)。不同的标准化方法，对系统的评价结果会产生不同的影响。其中，最常用的是Z-Score 标准化。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.feature_extraction.text import TfidfVectorizer</span><br><span class="line">from sklearn.naive_bayes import MultinomialNB</span><br><span class="line"></span><br><span class="line">    def nb_modle(self):</span><br><span class="line">        with open(&#x27;X_test.pkl&#x27;, &#x27;rb&#x27;) as file:</span><br><span class="line">            x_test = pickle.load(file)</span><br><span class="line"></span><br><span class="line">        with open(&#x27;X_train.pkl&#x27;, &#x27;rb&#x27;) as file:</span><br><span class="line">            x_train = pickle.load(file)</span><br><span class="line"></span><br><span class="line">        with open(&#x27;Y_train.pkl&#x27;, &#x27;rb&#x27;) as file:</span><br><span class="line">            y_train = pickle.load(file)</span><br><span class="line"></span><br><span class="line">        with open(&#x27;Y_test.pkl&#x27;, &#x27;rb&#x27;) as file:</span><br><span class="line">            y_test = pickle.load(file)</span><br><span class="line"></span><br><span class="line">        # 2.特征工程：文本特征抽取TF-IDF</span><br><span class="line">        transfer = TfidfVectorizer()</span><br><span class="line">        x_train = transfer.fit_transform(x_train)</span><br><span class="line">        # x_train的type-&gt; scipy.sparse.csr.csr_matrix,不可输出</span><br><span class="line">        x_test = transfer.transform(x_test)</span><br><span class="line"></span><br><span class="line">        # 3.朴素贝叶斯算法预估器流程</span><br><span class="line">        estimator = MultinomialNB()</span><br><span class="line">        estimator.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">        # 4.模型评估</span><br><span class="line">        predict = estimator.predict(x_test)</span><br><span class="line">        # 计算准确率</span><br><span class="line">        score = estimator.score(x_test,y_test)</span><br><span class="line">        print(&quot;朴素贝叶斯检测：&quot;)</span><br><span class="line">        print(&quot;predic:\n&quot;, predict)</span><br><span class="line">        print(&quot;真实值和预测值比较：\n&quot;, y_test == predict)</span><br><span class="line">        print(&quot;准确率：\n&quot;, score)</span><br><span class="line"></span><br><span class="line">        return predict,y_test == predict,score</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 测试类</span><br><span class="line">from NaiveBayes import NaiveBayes</span><br><span class="line"></span><br><span class="line"># NaiveBayes预测结果</span><br><span class="line">nb1 = NaiveBayes()</span><br><span class="line">predict,res,score = nb1.nb_modle()</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>结果展示：</p>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/9.png" class title="9.png">
+
+
+
+<h4 id="2-KNN"><a href="#2-KNN" class="headerlink" title="2. KNN"></a>2. KNN</h4><p>因为使用相同数据集，所以使用已保存的pkl文件就行，把朴素贝叶斯换成KNN（作为懒狗，还是用sklearn库中的方法）,差别就是预估器变了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line">    #其余和贝叶斯相同</span><br><span class="line">    estimator = KNeighborsClassifier()</span><br></pre></td></tr></table></figure>
+
+
+<p>结果展示：</p>
+<img src="/GANRDEN010.github.io/2022/05/08/20220508BS-02/10.png" class title="10.png">
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/05/20220505BS-01/" rel="prev" title="毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理">
+      <i class="fa fa-chevron-left"></i> 毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/09/20220509BS-03/" rel="next" title="毕设：基于机器学习的法律文书自动分类系统设计与实现__03flask基础">
+      毕设：基于机器学习的法律文书自动分类系统设计与实现__03flask基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E3%80%81%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%81%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.</span> <span class="nav-text">一、人工智能、机器学习、深度学习之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">二、机器学习分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A0%B9%E6%8D%AE%E8%AE%AD%E7%BB%83%E6%96%B9%E6%B3%95%E5%A4%A7%E8%87%B4%E5%8F%AF%E4%BB%A5%E5%88%86%E4%B8%BA3%E5%A4%A7%E7%B1%BB%EF%BC%9A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E3%80%81%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E3%80%81%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.0.1.</span> <span class="nav-text">机器学习根据训练方法大致可以分为3大类：监督学习、非监督学习、强化学习</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-%E3%80%8115%E7%A7%8D%E7%BB%8F%E5%85%B8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三 、15种经典机器学习算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF"><span class="nav-number">4.</span> <span class="nav-text">四、朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">1. 贝叶斯公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%EF%BC%8C%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">2. 朴素贝叶斯，举个栗子：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-KNN-K-Near-Neighbor"><span class="nav-number">5.</span> <span class="nav-text">二、 KNN(K Near Neighbor)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%88%E9%80%9A%E8%BF%87sklearn%E5%BA%93%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">五、 代码实现（通过sklearn库）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF"><span class="nav-number">6.1.</span> <span class="nav-text">1. 朴素贝叶斯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-KNN"><span class="nav-number">6.2.</span> <span class="nav-text">2. KNN</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Garden</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/GANRDEN010.github.io/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Garden</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/GANRDEN010.github.io/lib/anime.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/GANRDEN010.github.io/js/utils.js"></script>
+
+<script src="/GANRDEN010.github.io/js/motion.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

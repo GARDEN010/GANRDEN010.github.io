@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/GANRDEN010.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/GANRDEN010.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/GANRDEN010.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/GANRDEN010.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/GANRDEN010.github.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"garden010.github.io","root":"/GANRDEN010.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、flask框架 flask框架是python中的一个轻量级的前后端开发框架，不同于Django，flask只提供基础的功能，其他的功能需要安装各种插件。  官方文档：  https:&#x2F;&#x2F;dormousehole.readthedocs.io&#x2F;en&#x2F;latest&#x2F;  知了文档  https:&#x2F;&#x2F;www.zlkt.net&#x2F;book&#x2F;detail&#x2F;10  安装flask cmd: pip insta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理">
+<meta property="og:url" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/index.html">
+<meta property="og:site_name" content="Garden">
+<meta property="og:description" content="一、flask框架 flask框架是python中的一个轻量级的前后端开发框架，不同于Django，flask只提供基础的功能，其他的功能需要安装各种插件。  官方文档：  https:&#x2F;&#x2F;dormousehole.readthedocs.io&#x2F;en&#x2F;latest&#x2F;  知了文档  https:&#x2F;&#x2F;www.zlkt.net&#x2F;book&#x2F;detail&#x2F;10  安装flask cmd: pip insta">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/1.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/2.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/3.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/4.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/5.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/6.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/7.png">
+<meta property="og:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/8.png">
+<meta property="article:published_time" content="2022-05-05T07:32:53.000Z">
+<meta property="article:modified_time" content="2022-05-06T03:15:04.000Z">
+<meta property="article:author" content="Garden">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/1.png">
+
+<link rel="canonical" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理 | Garden</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/GANRDEN010.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Garden</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">须知少时凌云志，曾许人间第一流</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/GANRDEN010.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/GANRDEN010.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://garden010.github.io/GANRDEN010.github.io/2022/05/05/20220505BS-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/GANRDEN010.github.io/images/avatar.gif">
+      <meta itemprop="name" content="Garden">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Garden">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          毕设：基于机器学习的法律文书自动分类系统设计与实现__01数据预处理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-05 15:32:53" itemprop="dateCreated datePublished" datetime="2022-05-05T15:32:53+08:00">2022-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-06 11:15:04" itemprop="dateModified" datetime="2022-05-06T11:15:04+08:00">2022-05-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="一、flask框架"><a href="#一、flask框架" class="headerlink" title="一、flask框架"></a>一、flask框架</h3><blockquote>
+<p>flask框架是python中的一个轻量级的前后端开发框架，不同于Django，flask只提供基础的功能，其他的功能需要安装各种插件。</p>
+</blockquote>
+<p>官方文档：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://dormousehole.readthedocs.io/en/latest/">https://dormousehole.readthedocs.io/en/latest/</a></p>
+</blockquote>
+<p>知了文档</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.zlkt.net/book/detail/10">https://www.zlkt.net/book/detail/10</a></p>
+</blockquote>
+<h5 id="安装flask"><a href="#安装flask" class="headerlink" title="安装flask"></a>安装flask</h5><blockquote>
+<p>cmd: pip install flask </p>
+</blockquote>
+<h5 id="新建flask项目"><a href="#新建flask项目" class="headerlink" title="新建flask项目"></a>新建flask项目</h5><p>社区版pycharm有预设，更简单。</p>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/1.png" class title="1.png">
+<p>运行环境调整至对应编译器版本，点击运行，进入首页。</p>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/2.png" class title="2.png">
+<p>首页对应根路径下hello_world()方法</p>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/3.png" class title="3.png">
+
+
+<h3 id="二、设计模型"><a href="#二、设计模型" class="headerlink" title="二、设计模型"></a>二、设计模型</h3><p>根目录下新建文件夹放模型：NLP_Modle</p>
+<h4 id="1-通过scrapy框架爬到的数据集："><a href="#1-通过scrapy框架爬到的数据集：" class="headerlink" title="1. 通过scrapy框架爬到的数据集："></a>1. 通过scrapy框架爬到的数据集：</h4><blockquote>
+<p>data分为民事、刑事、行政三类，为了节约时间提取部分数据作为Test.json</p>
+</blockquote>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/4.png" class title="4.png">
+
+<h4 id="2-设置停用词字典和自定义词典："><a href="#2-设置停用词字典和自定义词典：" class="headerlink" title="2. 设置停用词字典和自定义词典："></a>2. 设置停用词字典和自定义词典：</h4><blockquote>
+<p>停用词：停用词是指在信息检索中，为节省存储空间和提高搜索效率，在处理自然语言数据（或文本）之前或之后会自动过滤掉某些字或词。（比如你我他这类没有特征意义的字词）</p>
+</blockquote>
+<blockquote>
+<p>自定义字典：如“中华人民共和国民事诉讼法”这个词经过分词可能分为“中华人民共和国、民事、诉讼法”三个词，与预期不符，这时就可以通过设置自定义字典令字典中的词组不会分成多个词语</p>
+</blockquote>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/5.png" class title="5.png">
+
+<h4 id="3-数据预处理"><a href="#3-数据预处理" class="headerlink" title="3. 数据预处理"></a>3. 数据预处理</h4><h5 id="（1）-Data-Pre-get-data-self-fp-，获取数据"><a href="#（1）-Data-Pre-get-data-self-fp-，获取数据" class="headerlink" title="（1）. Data_Pre().get_data(self,fp)，获取数据"></a>（1）. Data_Pre().get_data(self,fp)，获取数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">    # 获取数据</span><br><span class="line">    def get_data(self,fp):</span><br><span class="line">        f2 = open(fp, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;)</span><br><span class="line">        info_data = json.load(f2)</span><br><span class="line">        list_data = []</span><br><span class="line">        for i in info_data:</span><br><span class="line">            # title和content拼接在一起</span><br><span class="line">            list_data.append(i[&#x27;title&#x27;] + i[&#x27;content&#x27;])</span><br><span class="line">        f2.close()</span><br><span class="line">        return list_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # 测试：</span><br><span class="line">    from Data_Pre import Data_Pre</span><br><span class="line"></span><br><span class="line">class Test():</span><br><span class="line">    min_shi = Data_Pre()</span><br><span class="line">    min_shi_list = min_shi.get_data(r&#x27;E:\Java_workspace\final_flask_20220505\NLP_Modle\data\test.json&#x27;)</span><br><span class="line">    print(len(min_shi_list))</span><br><span class="line">    print(type(min_shi_list))</span><br><span class="line">    print(min_shi_list)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/6.png" class title="6.png">
+
+<h5 id="（2）-Data-Pre-pre-word-self-data-，去停用词等"><a href="#（2）-Data-Pre-pre-word-self-data-，去停用词等" class="headerlink" title="（2）. Data_Pre().pre_word(self,data)，去停用词等"></a>（2）. Data_Pre().pre_word(self,data)，去停用词等</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    def pre_word(self,data):</span><br><span class="line">        jieba.load_userdict(r&quot;E:\Java_workspace\final_flask_20220505\NLP_Modle\dict\dict.txt&quot;)  # 加载自定义词典</span><br><span class="line">        stopwords = [line.strip() for line in open</span><br><span class="line">        (r&#x27;E:\Java_workspace\final_flask_20220505\NLP_Modle\dict\cn_stopwords.txt&#x27;, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;)</span><br><span class="line">            .readlines()]  # 加载停用词列表</span><br><span class="line">        # 1.分词</span><br><span class="line">        data2 = []</span><br><span class="line">        for sentence in data:</span><br><span class="line">            data2.append(jieba.cut(sentence))</span><br><span class="line">        # 2.去停用词</span><br><span class="line">        data3 = []</span><br><span class="line">        for word_generator in data2:</span><br><span class="line">            word_list = []</span><br><span class="line">            for word in word_generator:</span><br><span class="line">                if len(word) != 1 and word not in stopwords and word.isdigit() == False:  # 去单字、停用词和数字</span><br><span class="line">                    word_list.append(word)</span><br><span class="line">            data3.append(word_list)</span><br><span class="line">        return data3</span><br><span class="line"></span><br><span class="line"># 测试</span><br><span class="line">class Test():</span><br><span class="line">    # 获取数据</span><br><span class="line">    min_shi = Data_Pre()</span><br><span class="line">    min_shi_list = min_shi.get_data(r&#x27;E:\Java_workspace\final_flask_20220505\NLP_Modle\data\test.json&#x27;)</span><br><span class="line"></span><br><span class="line">    # 分词去停用词</span><br><span class="line">    min_shi_wordList = min_shi.pre_word(min_shi_list)</span><br><span class="line">    print(min_shi_wordList)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/7.png" class title="7.png">
+
+<h5 id="（3）-Data-Pre-word-frequency-self-data-，统计词频并做降序排列————为词云做准备"><a href="#（3）-Data-Pre-word-frequency-self-data-，统计词频并做降序排列————为词云做准备" class="headerlink" title="（3）. Data_Pre().word_frequency(self,data)，统计词频并做降序排列————为词云做准备"></a>（3）. Data_Pre().word_frequency(self,data)，统计词频并做降序排列————为词云做准备</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> # 3.统计词频(整个训练集样本)</span><br><span class="line">    def word_frequency(self,data):</span><br><span class="line">        counts=&#123;&#125;</span><br><span class="line">        for word_list in data:</span><br><span class="line">            for word in word_list:</span><br><span class="line">                counts[word] = counts.get(word, 0) + 1</span><br><span class="line"></span><br><span class="line">        word_frq_list = list(counts.items())  # 字典转元组，元组存放在word_frq_list这个列表里</span><br><span class="line">        word_frq_list.sort(key=lambda x: x[1], reverse=True)    #reverse=True:降序排列</span><br><span class="line">        print(&quot;统计词频完成！&quot;)</span><br><span class="line">        return word_frq_list</span><br><span class="line"></span><br><span class="line">class Test():</span><br><span class="line">    # 获取数据</span><br><span class="line">    min_shi = Data_Pre()</span><br><span class="line">    min_shi_list = min_shi.get_data(r&#x27;E:\Java_workspace\final_flask_20220505\NLP_Modle\data\test.json&#x27;)</span><br><span class="line"></span><br><span class="line">    # 分词去停用词</span><br><span class="line">    min_shi_wordList = min_shi.pre_word(min_shi_list)</span><br><span class="line"></span><br><span class="line">    # 词频统计</span><br><span class="line">    word_frq_list = min_shi.word_frequency(min_shi_wordList)</span><br><span class="line">    print(word_frq_list)</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<img src="/GANRDEN010.github.io/2022/05/05/20220505BS-01/8.png" class title="8.png">
+<p>在补充一个写入csv文件，方便后面调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def write_to_CSVfp(self,data,fpName):</span><br><span class="line">    f = open(fpName, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;, newline=&#x27;&#x27;)</span><br><span class="line">    # 2. 基于文件对象构建 csv写入对象</span><br><span class="line">    csv_writer = csv.writer(f)</span><br><span class="line">    csv_writer.writerow([&#x27;word&#x27;, &#x27;Frequency&#x27;])</span><br><span class="line">    for i in data:</span><br><span class="line">        csv_writer.writerow(i)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）-Data-Pre-target-self-lenth-target-给训练集加上类别"><a href="#（3）-Data-Pre-target-self-lenth-target-给训练集加上类别" class="headerlink" title="（3）. Data_Pre().target(self,lenth,target) :给训练集加上类别"></a>（3）. Data_Pre().target(self,lenth,target) :给训练集加上类别</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def target(self,lenth,target):</span><br><span class="line">    targetlist=[]</span><br><span class="line">    for i in range(lenth):</span><br><span class="line">        targetlist.append(target)</span><br><span class="line">    return targetlist</span><br><span class="line"></span><br><span class="line">class Test():</span><br><span class="line"># 获取数据</span><br><span class="line">min_shi = Data_Pre()</span><br><span class="line">min_shi_list = min_shi.get_data(r&#x27;E:\Java_workspace\final_flask_20220505\NLP_Modle\data\test.json&#x27;)</span><br><span class="line"></span><br><span class="line"># 分词去停用词</span><br><span class="line">min_shi_wordList = min_shi.pre_word(min_shi_list)</span><br><span class="line"></span><br><span class="line"># 加类别</span><br><span class="line">target = min_shi.target(len(min_shi_wordList),&quot;test&quot;)</span><br><span class="line">print(target)</span><br><span class="line">print(len(min_shi_wordList))</span><br></pre></td></tr></table></figure>
+<p>target列表和用于测试的min_shi_wordList列表长度一致，用于标志该训练集类别</p>
+<h5 id="（3）-SumData-sum-data-self-data1-data2-data3-合并加完类别的数据集"><a href="#（3）-SumData-sum-data-self-data1-data2-data3-合并加完类别的数据集" class="headerlink" title="（3）. SumData().sum_data(self,data1,data2,data3) :合并加完类别的数据集"></a>（3）. SumData().sum_data(self,data1,data2,data3) :合并加完类别的数据集</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class SumData():</span><br><span class="line">    def sum_data(self,data1,data2,data3):</span><br><span class="line">        data=data1+data2+data3</span><br><span class="line">        return data</span><br><span class="line"></span><br><span class="line"># 测试</span><br><span class="line">s1=SumData()</span><br><span class="line">    data = s1.sum_data(min_shi,xin_shi,xing_zheng)</span><br><span class="line">    target = s1.sum_data(target_1,target_2,target_3)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="至此，数据预处理基本完成，接下来就是模型的训练。"><a href="#至此，数据预处理基本完成，接下来就是模型的训练。" class="headerlink" title="至此，数据预处理基本完成，接下来就是模型的训练。"></a>至此，数据预处理基本完成，接下来就是模型的训练。</h3>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/03/20220503Internet/" rel="prev" title="（计网复习）物理层基础_1">
+      <i class="fa fa-chevron-left"></i> （计网复习）物理层基础_1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/GANRDEN010.github.io/2022/05/08/20220508BS-02/" rel="next" title="毕设：基于机器学习的法律文书自动分类系统设计与实现__02模型搭建">
+      毕设：基于机器学习的法律文书自动分类系统设计与实现__02模型搭建 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81flask%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">一、flask框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85flask"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装flask</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BB%BAflask%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">新建flask项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">二、设计模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87scrapy%E6%A1%86%E6%9E%B6%E7%88%AC%E5%88%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">1. 通过scrapy框架爬到的数据集：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%AE%BE%E7%BD%AE%E5%81%9C%E7%94%A8%E8%AF%8D%E5%AD%97%E5%85%B8%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%8D%E5%85%B8%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">2. 设置停用词字典和自定义词典：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3. 数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89-Data-Pre-get-data-self-fp-%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）. Data_Pre().get_data(self,fp)，获取数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89-Data-Pre-pre-word-self-data-%EF%BC%8C%E5%8E%BB%E5%81%9C%E7%94%A8%E8%AF%8D%E7%AD%89"><span class="nav-number">2.3.2.</span> <span class="nav-text">（2）. Data_Pre().pre_word(self,data)，去停用词等</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89-Data-Pre-word-frequency-self-data-%EF%BC%8C%E7%BB%9F%E8%AE%A1%E8%AF%8D%E9%A2%91%E5%B9%B6%E5%81%9A%E9%99%8D%E5%BA%8F%E6%8E%92%E5%88%97%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E4%B8%BA%E8%AF%8D%E4%BA%91%E5%81%9A%E5%87%86%E5%A4%87"><span class="nav-number">2.3.3.</span> <span class="nav-text">（3）. Data_Pre().word_frequency(self,data)，统计词频并做降序排列————为词云做准备</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89-Data-Pre-target-self-lenth-target-%E7%BB%99%E8%AE%AD%E7%BB%83%E9%9B%86%E5%8A%A0%E4%B8%8A%E7%B1%BB%E5%88%AB"><span class="nav-number">2.3.4.</span> <span class="nav-text">（3）. Data_Pre().target(self,lenth,target) :给训练集加上类别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89-SumData-sum-data-self-data1-data2-data3-%E5%90%88%E5%B9%B6%E5%8A%A0%E5%AE%8C%E7%B1%BB%E5%88%AB%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.3.5.</span> <span class="nav-text">（3）. SumData().sum_data(self,data1,data2,data3) :合并加完类别的数据集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%B3%E6%AD%A4%EF%BC%8C%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E5%AE%8C%E6%88%90%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E6%98%AF%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%AD%E7%BB%83%E3%80%82"><span class="nav-number">3.</span> <span class="nav-text">至此，数据预处理基本完成，接下来就是模型的训练。</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Garden</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/GANRDEN010.github.io/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Garden</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/GANRDEN010.github.io/lib/anime.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/GANRDEN010.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/GANRDEN010.github.io/js/utils.js"></script>
+
+<script src="/GANRDEN010.github.io/js/motion.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/GANRDEN010.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
